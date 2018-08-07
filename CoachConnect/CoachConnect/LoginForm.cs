@@ -1,16 +1,12 @@
-﻿// <copyright file="LoginForm.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="LoginForm.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
+    using System.Data.Entity;
+    using System.Data.SqlClient;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -24,27 +20,6 @@ namespace CoachConnect
         public LoginForm()
         {
             this.InitializeComponent();
-        }
-
-        /// <summary>
-        /// Method to handle Logout process
-        /// </summary>
-        public void Logout()
-        {
-            // Clear out text boxes and set focus to the username text box
-            this.txtUsername.Text = string.Empty;
-            this.txtPassword.Text = string.Empty;
-
-            this.txtUsername.Focus();
-
-            // Clear out all static variables related to user
-            Program.CurrentUser = null;
-            Program.IsStudent = false;
-            Program.IsCoach = false;
-            Program.IsAdmin = false;
-
-            // Show hidden login form
-            Program.LoginForm.Show();
         }
 
         /// <summary>
@@ -83,21 +58,22 @@ namespace CoachConnect
         {
             try
             {
-                using (var context = new db_sft_2172Entities())
+                using (db_sft_2172Entities context = new db_sft_2172Entities())
                 {
                     var userQuery = from u in context.Users
-                                    where u.UserID.Equals(username)
-                                    select u;
+                        where u.UserID.Equals(username)
+                        select u;
 
                     if (userQuery.Any())
                     {
-                        var userResult = userQuery.FirstOrDefault<User>();
+                        var userResult = userQuery.FirstOrDefault();
 
                         // Determine whether user is active.  If not, display a message and Logout.
                         if (!userResult.IsActive)
                         {
-                            MessageBox.Show("Sorry, this user is inactive.  Please contact an administrator if you need to reactivate your account.");
-                            this.Logout();
+                            MessageBox.Show(
+                                @"Sorry, this user is inactive.  Please contact an administrator if you need to reactivate your account.");
+                            Program.Logout();
 
                             return;
                         }
@@ -115,19 +91,20 @@ namespace CoachConnect
                             Program.CurrentUser = userResult.UserID;
 
                             // If flag is set to reset password, load the Change Password form.
-                            if (userResult.ResetPassword)
+                            if (userResult.ResetPassword != null)
                             {
-                                MessageBox.Show("Your password is outdated and needs to be changed.  Please reset your password now.");
+                                MessageBox.Show(
+                                    @"Your password is outdated and needs to be changed.  Please reset your password now.");
 
-                                ResetStudentPassword changePassword = new ResetStudentPassword();
+                                ResetMyPassword changePassword = new ResetMyPassword();
                                 changePassword.ShowDialog();
                             }
                             else
                             {
                                 // If any of these three values are true, update static variables
-                                if (userResult.IsStudent)
+                                if (userResult.IsSupervisor)
                                 {
-                                    Program.IsStudent = true;
+                                    Program.IsSupervisor = true;
                                 }
 
                                 if (userResult.IsAdmin)
@@ -135,21 +112,13 @@ namespace CoachConnect
                                     Program.IsAdmin = true;
                                 }
 
-                                if (userResult.IsCoach)
-                                {
-                                    Program.IsCoach = true;
-                                }
-
-                                // Call method from Program class to display Role Page
-                                Program.RolePage();
-
-                                // Hide window once Role Form loads (we cannot close this window or the program will close)
-                                this.Hide();
+                                // Close window once finished
+                                this.Close();
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Sorry, invalid username or password.  Please try again!");
+                            MessageBox.Show(@"Sorry, invalid username or password.  Please try again!");
                             this.txtUsername.Text = string.Empty;
                             this.txtPassword.Text = string.Empty;
                             this.txtUsername.Focus();
@@ -157,16 +126,21 @@ namespace CoachConnect
                     }
                     else
                     {
-                        MessageBox.Show("Sorry, invalid username or password.  Please try again!");
+                        MessageBox.Show(@"Sorry, invalid username or password.  Please try again!");
                         this.txtUsername.Text = string.Empty;
                         this.txtPassword.Text = string.Empty;
                         this.txtUsername.Focus();
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.Message);
+                //MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
     }

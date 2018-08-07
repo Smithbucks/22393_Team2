@@ -1,12 +1,9 @@
-﻿// <copyright file="Program.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="Program.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -15,24 +12,9 @@ namespace CoachConnect
     public static class Program
     {
         /// <summary>
-        /// Gets or sets a public static string to store the Coach role name
+        /// Gets or sets a mainForm object that is loaded when the program starts
         /// </summary>
-        public static string CoachRoleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets a public static string to store the Student role name
-        /// </summary>
-        public static string StudentRoleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets a public string to store the Admin role name
-        /// </summary>
-        public static string AdminRoleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets a LoginForm object that is loaded when the program starts
-        /// </summary>
-        public static LoginForm LoginForm { get; set; }
+        public static MainForm MainForm { get; set; }
 
         /// <summary>
         /// Gets or sets the username that is logged into the app.
@@ -40,14 +22,9 @@ namespace CoachConnect
         public static string CurrentUser { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the user is a student.
+        /// Gets or sets a value indicating whether the user is a supervisor.
         /// </summary>
-        public static bool IsStudent { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the user is a coach.
-        /// </summary>
-        public static bool IsCoach { get; set; }
+        public static bool IsSupervisor { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the user is an admin.
@@ -62,45 +39,29 @@ namespace CoachConnect
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            LoginForm = new LoginForm();
+            MainForm = new MainForm();
 
-            Program.StudentRoleName = "Student";
-            Program.CoachRoleName = "Coach";
-            Program.AdminRoleName = "Admin";
-            
-            Application.Run(LoginForm);
+            Application.Run(MainForm);
         }
 
         /// <summary>
-        /// RolePage: A method to create and show a new role form once the user is logged in
+        /// Method to handle Logout process
         /// </summary>
-        public static void RolePage()
+        public static void Logout()
         {
-            RoleForm roleForm = new RoleForm();
-            roleForm.Show();
+            // Clear out all static variables related to user
+            Program.CurrentUser = null;
+            Program.IsSupervisor = false;
+            Program.IsAdmin = false;
         }
 
         /// <summary>
-        /// OpenUserHomepage: A method that opens the correct start page based on the selected role
+        /// A method to open a new LoginForm and display it as a dialog.
         /// </summary>
-        /// <param name="roleText">The role name selected in the RoleForm</param>
-        public static void OpenUserHomepage(string roleText)
+        public static void Login()
         {
-            if (roleText == Program.StudentRoleName)
-            {
-                var newForm = new FindCoachForm();
-                newForm.Show();
-            }
-            else if (roleText == Program.CoachRoleName)
-            {
-                var newForm = new FrmCoachView();
-                newForm.Show();
-            }
-            else if (roleText == Program.AdminRoleName)
-            {
-                var newForm = new AdminForm();
-                newForm.Show();
-            }
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
         }
     }
 }

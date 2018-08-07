@@ -1,14 +1,10 @@
-﻿// <copyright file="SaltedHash.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="SaltedHash.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Security.Cryptography;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// An object used to generate an encrypted password.
@@ -35,12 +31,12 @@ namespace CoachConnect
         /// <summary>
         /// Gets the final encrypted version of the password
         /// </summary>
-        public string Hash { get; private set; }
+        public string Hash { get; }
 
         /// <summary>
         /// Gets a random string to be appended in front of the password
         /// </summary>
-        public string Salt { get; private set; }
+        public string Salt { get; }
 
         /// <summary>
         /// A method to calculate the hash based on the salt and entered password.
@@ -63,7 +59,7 @@ namespace CoachConnect
         /// <param name="salt">The salt used by the original password</param>
         /// <param name="hash">The final password to be verified </param>
         /// <param name="password">The unencrypted password entered by the user</param>
-        /// <returns>Returns a boolean to determine whether the encrypted version of the entered password matchs a permanent location.</returns>
+        /// <returns>Returns a boolean to determine whether the encrypted version of the entered password matches a permanent location.</returns>
         public static bool Verify(string salt, string hash, string password)
         {
             return hash == ComputeHash(salt, password);

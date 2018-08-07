@@ -4,45 +4,41 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8456ac9ca2294a93bef2b8d4ca3e5972" Name="Diagram1" ZoomLevel="95">
+      <Diagram DiagramId="8456ac9ca2294a93bef2b8d4ca3e5972" Name="Diagram1" ZoomLevel="111">
         <EntityTypeShape EntityType="db_sft_2172Model.Building" Width="1.5" PointX="1.125" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.Course" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_sft_2172Model.Room" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sft_2172Model.Room" Width="1.5" PointX="9.125" PointY="1.875" IsExpanded="true" />
         <AssociationConnector Association="db_sft_2172Model.FK_Room_Building" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="db_sft_2172Model.TimePeriod" Width="1.5" PointX="9.75" PointY="12.5" />
         <EntityTypeShape EntityType="db_sft_2172Model.Department" Width="1.5" PointX="0.75" PointY="5" />
         <EntityTypeShape EntityType="db_sft_2172Model.Interest" Width="1.5" PointX="0.75" PointY="8.125" />
-        <EntityTypeShape EntityType="db_sft_2172Model.Role" Width="1.5" PointX="5.375" PointY="0.875" />
         <AssociationConnector Association="db_sft_2172Model.FK_Course_Department" />
         <AssociationConnector Association="db_sft_2172Model.FK_Department_Interest" />
-        <EntityTypeShape EntityType="db_sft_2172Model.User" Width="1.5" PointX="6" PointY="11" />
-        <EntityTypeShape EntityType="db_sft_2172Model.Day" Width="1.5" PointX="10.25" PointY="15" />
-        <EntityTypeShape EntityType="db_sft_2172Model.UserAvailability" Width="1.5" PointX="7.75" PointY="15.375" />
-        <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_Day" />
-        <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_TimePeriod" />
-        <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_User" />
-        <EntityTypeShape EntityType="db_sft_2172Model.UserCourse" Width="1.5" PointX="8.25" PointY="6.125" />
-        <EntityTypeShape EntityType="db_sft_2172Model.CoachInterest" Width="1.5" PointX="7.375" PointY="0.75" />
-        <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_Course" />
-        <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_Role" />
-        <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_User" />
-        <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="9.375" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="8.375" PointY="9.75" />
-        <EntityTypeShape EntityType="db_sft_2172Model.ViewSession" Width="1.5" PointX="11.25" PointY="0.625" />
-        <EntityTypeShape EntityType="db_sft_2172Model.Availability" Width="1.5" PointX="0.75" PointY="10.75" />
-        <EntityTypeShape EntityType="db_sft_2172Model.Session" Width="1.5" PointX="12.5" PointY="6.375" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Session_Course" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Session_Day" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Session_Room" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Session_TimePeriod" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Session_User" />
-        <EntityTypeShape EntityType="db_sft_2172Model.StudentByCourse" Width="1.5" PointX="12.375" PointY="12.75" />
-        <EntityTypeShape EntityType="db_sft_2172Model.ViewSessionRoster" Width="1.5" PointX="13.375" PointY="0.75" />
-        <EntityTypeShape EntityType="db_sft_2172Model.SessionRoster" Width="1.5" PointX="14.75" PointY="7.25" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Role_SessionRoster" />
-        <AssociationConnector Association="db_sft_2172Model.FK_SessionRoster_Session" />
-        <AssociationConnector Association="db_sft_2172Model.FK_User_SessionRoster" />
-        <EntityTypeShape EntityType="db_sft_2172Model.SessionsByInterest" Width="1.5" PointX="3.625" PointY="9.5" />
+        <EntityTypeShape EntityType="db_sft_2172Model.User" Width="1.5" PointX="8.875" PointY="14.125" />
+        <EntityTypeShape EntityType="db_sft_2172Model.Day" Width="1.5" PointX="3.375" PointY="0.875" />
+        <EntityTypeShape EntityType="db_sft_2172Model.Coach" Width="1.5" PointX="3.375" PointY="14" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CoachAvailability" Width="1.5" PointX="13.125" PointY="13.125" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CoachSession" Width="1.5" PointX="6.25" PointY="7.5" />
+        <EntityTypeShape EntityType="db_sft_2172Model.Time" Width="1.5" PointX="4" PointY="10.75" />
+        <EntityTypeShape EntityType="db_sft_2172Model.ViewCoachCours" Width="1.5" PointX="18.25" PointY="6.875" />
+        <AssociationConnector Association="db_sft_2172Model.FK_Coach_User" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Coach" />
+        <AssociationConnector Association="db_sft_2172Model.FK_Session_Coach" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Day" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Time" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Time1" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachSession_Time" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachSession_Time1" />
+        <AssociationConnector Association="db_sft_2172Model.FK_Session_Day1" />
+        <AssociationConnector Association="db_sft_2172Model.FK_Session_Room1" />
+        <AssociationConnector Association="db_sft_2172Model.FK_Session_User1" />
+        <AssociationConnector Association="db_sft_2172Model.CoachCourseList" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CoachCourse" Width="1.5" PointX="0.875" PointY="11.5" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_Course1" />
+        <EntityTypeShape EntityType="db_sft_2172Model.GetCoachAvailability" Width="1.5" PointX="15.75" PointY="6.625" />
+        <EntityTypeShape EntityType="db_sft_2172Model.GetCoachSchedule" Width="1.5" PointX="13.75" PointY="6.375" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_Coach1" />
+        <EntityTypeShape EntityType="db_sft_2172Model.GetSchedulePivot" Width="1.5" PointX="11.375" PointY="6.375" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CourseListing" Width="1.5" PointX="5.375" PointY="3.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

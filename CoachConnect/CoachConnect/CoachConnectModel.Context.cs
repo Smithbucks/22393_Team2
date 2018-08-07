@@ -30,24 +30,20 @@ namespace CoachConnect
         public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
-        public virtual DbSet<TimePeriod> TimePeriods { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Interest> Interests { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Day> Days { get; set; }
-        public virtual DbSet<UserAvailability> UserAvailabilities { get; set; }
-        public virtual DbSet<UserCourse> UserCourses { get; set; }
-        public virtual DbSet<CoachInterest> CoachInterests { get; set; }
-        public virtual DbSet<CoachByTime> CoachByTimes { get; set; }
-        public virtual DbSet<CoachByName> CoachByNames { get; set; }
-        public virtual DbSet<ViewSession> ViewSessions { get; set; }
-        public virtual DbSet<Availability> Availabilities { get; set; }
-        public virtual DbSet<Session> Sessions { get; set; }
-        public virtual DbSet<StudentByCourse> StudentByCourses { get; set; }
-        public virtual DbSet<ViewSessionRoster> ViewSessionRosters { get; set; }
-        public virtual DbSet<SessionRoster> SessionRosters { get; set; }
-        public virtual DbSet<SessionsByInterest> SessionsByInterests { get; set; }
+        public virtual DbSet<Coach> Coaches { get; set; }
+        public virtual DbSet<CoachAvailability> CoachAvailabilities { get; set; }
+        public virtual DbSet<CoachSession> CoachSessions { get; set; }
+        public virtual DbSet<Time> Times { get; set; }
+        public virtual DbSet<ViewCoachCours> ViewCoachCourses { get; set; }
+        public virtual DbSet<CoachCourse> CoachCourses { get; set; }
+        public virtual DbSet<GetCoachAvailability> GetCoachAvailabilities { get; set; }
+        public virtual DbSet<GetCoachSchedule> GetCoachSchedules { get; set; }
+        public virtual DbSet<SchedulePivot> SchedulePivots { get; set; }
+        public virtual DbSet<CourseListing> CourseListings { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -163,6 +159,15 @@ namespace CoachConnect
                 new ObjectParameter("CourseID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_GetEligibleStudents", sessionIDParameter, courseIDParameter);
+        }
+    
+        public virtual int GenerateSchedule(string interest)
+        {
+            var interestParameter = interest != null ?
+                new ObjectParameter("Interest", interest) :
+                new ObjectParameter("Interest", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GenerateSchedule", interestParameter);
         }
     }
 }

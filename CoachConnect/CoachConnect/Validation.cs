@@ -1,15 +1,9 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Validation.cs" company="PABT,Inc">
-//     Copyright (c) Pabt, Inc. All rights reserved
+﻿// <copyright file="Validation.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
-//-----------------------------------------------------------------------
 namespace CoachConnect
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Validation of textboxes
@@ -44,7 +38,7 @@ namespace CoachConnect
         {
             try
             {
-                var addr = new System.Net.Mail.MailAddress(tb);
+                var emailAddress = new System.Net.Mail.MailAddress(tb);
                 return true;
             }
             catch
@@ -61,14 +55,7 @@ namespace CoachConnect
         /// <returns>return boolean value of valid string</returns>
         public bool ValidatePhone(string tb)
         {
-            if (tb.Length == 10)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return tb.Length == 10;
         }
 
         /// <summary>
@@ -79,14 +66,7 @@ namespace CoachConnect
         /// <returns>returns boolean dependent on if something is selected</returns>
         public bool ValidateComboBox(int selectedIndex)
         {
-            if (selectedIndex == -1)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return selectedIndex != -1;
         }
 
         /// <summary>
@@ -96,16 +76,8 @@ namespace CoachConnect
         /// <returns>trimmed name properly formatted</returns>
         public string CleanString(string dirty)
         {
-            string clean = string.Empty;
-            clean = dirty.Trim();
-            if (clean.Length > 1)
-            {
-                return char.ToUpper(clean[0]) + clean.Substring(1).ToLower();
-            }
-            else
-            {
-                return clean.ToUpper();
-            }
+            string clean = dirty.Trim();
+            return clean.Length > 1 ? char.ToUpper(clean[0]) + clean.Substring(1).ToLower() : clean.ToUpper();
         }
 
         /// <summary>
@@ -134,8 +106,8 @@ namespace CoachConnect
         /// <returns>returns string properly formatted</returns>
         public string FormatPhone(string phone)
         {
-            string formatPhone = string.Empty;
-            return formatPhone = "(" + phone.Substring(0, 3) + ")" + phone.Substring(3, 3) + "-" + phone.Substring(6, 4);
+            string formatPhone = "(" + phone.Substring(0, 3) + ")" + phone.Substring(3, 3) + "-" + phone.Substring(6, 4);
+            return formatPhone; 
         }
     }
 }

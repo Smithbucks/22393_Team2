@@ -1,9 +1,9 @@
-﻿// <copyright file="AssemblyInfo.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="AssemblyInfo.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 
 using System.Reflection;
-using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -12,9 +12,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CoachConnect")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Adam J. Smith at NWTC")]
 [assembly: AssemblyProduct("CoachConnect")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright ©  2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

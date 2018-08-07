@@ -1,27 +1,24 @@
-﻿// <copyright file="UserAdminForm.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="UserAdminForm.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.SqlClient;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="UserAdminForm"/> class.
+    /// Initializes a new instance of the <see cref="UserProfileForm"/> class.
     /// </summary>
-    public partial class UserAdminForm : Form
+    public partial class UserProfileForm : Form
     {
         /// <summary>
-        /// Initializes a new instance of the UserAdminForm class.
+        /// Initializes a new instance of the <see cref="UserProfileForm"/> class.
         /// </summary>
-        public UserAdminForm()
+        public UserProfileForm()
         {
             this.InitializeComponent();
         }
@@ -33,7 +30,6 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void UserAdminFormLoad(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
             this.DisplayUsers();
         }
 
@@ -42,165 +38,193 @@ namespace CoachConnect
         /// </summary>
         private void DisplayUsers()
         {
-            using (var context = new db_sft_2172Entities())
+            try
             {
-                // Query user table in database and returns the list of the users in ascending order according to last name
-                var userQuery = from u in context.Users
-                                orderby u.LastName ascending
-                                select u;
-
-                // Clearing the list box for new entries.
-                this.lstBoxUsers.Items.Clear();
-                foreach (var item in userQuery)
+                using (var context = new db_sft_2172Entities())
                 {
-                    // adding to the listbox
-                    string username = item.UserID + " " + item.DisplayName;
-                    this.lstBoxUsers.Items.Add(username);
+                    // Query user table in database and returns the list of the users in ascending order according to last name
+                    var userQuery = from users in context.Users
+                        orderby users.LastName
+                        select users;
+
+                    // Convert query results to list
+                    List<User> userList = userQuery.ToList();
+
+                    // Set combo box data source and update data member settings
+                    this.cbxChooseUser.DataSource = userList;
+                    this.cbxChooseUser.ValueMember = "UserID";
+                    this.cbxChooseUser.DisplayMember = "DisplayName";
                 }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         /// <summary>
-        /// Clear all checkboxes
+        /// Clear all data fields
         /// </summary>
-        private void ChkBoxClear()
+        private void ClearAllFields()
         {
-           // Clearing check boxes and text boxes.
-            this.chkBoxAdmin.Checked = false;
-            this.chkBoxActive.Checked = false;
-            this.chkBoxCoach.Checked = false;
-            this.chkBoxStudent.Checked = false;
-            this.txtBoxFirstName.Clear();
-            this.txtBoxLastName.Clear();
-            this.txtBoxMiddleName.Clear();
-            this.txtBoxPassword.Clear();
-            this.txtBoxUserID.Clear();
+            // Clearing check boxes and text boxes.
+            this.txtID.Clear();
+            this.txtFirstName.Clear();
+            this.txtLastName.Clear();
+            this.txtMiddleName.Clear();
+            this.txtDisplayName.Clear();
+            this.txtEmail.Clear();
+            this.txtPhone.Clear();
+            this.chkActive.Checked = false;
+            this.chkAdmin.Checked = false;
+            this.chkSupervisor.Checked = false;
         }
 
         /// <summary>
-        /// Populates the check boxes and text boxes.
+        /// Populates the combo boxes and text boxes with the selected user's information
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void LstBoxUsersSelectedIndexChanged(object sender, EventArgs e)
+        private void CbxChooseUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (var context = new db_sft_2172Entities())
+            if (this.cbxChooseUser.SelectedIndex == -1)
             {
-                // Query is getting the user num from the list box.
-                string username = this.lstBoxUsers.SelectedItem.ToString();
-                string[] userNameSplit = username.Split(' ');
-                string usernum = userNameSplit[0];
+                return;
+            }
 
-                // Finds the user in the database.
-                var userQuery = from u in context.Users
-                                where u.UserID.Equals(usernum)
-                                select u;
-
-                // If the result has a user it displays the info in the check boxes and the text boxes.
-                if (userQuery.Any())
+            try
+            {
+                using (var context = new db_sft_2172Entities())
                 {
-                    var userResult = userQuery.FirstOrDefault<User>();
-                    this.txtBoxFirstName.Text = userResult.FirstName;
-                    this.txtBoxLastName.Text = userResult.LastName;
-                    this.txtBoxMiddleName.Text = userResult.MiddleName;
-                    this.txtBoxUserID.Text = userResult.UserID;
-                    this.txtBoxPassword.Text = userResult.Password;
+                    // Query obtains the user ID from the combo box
+                    string userId = this.cbxChooseUser.SelectedValue.ToString();
 
-                    this.chkBoxAdmin.Checked = userResult.IsAdmin;
-                    this.chkBoxActive.Checked = userResult.IsActive;
-                    this.chkBoxStudent.Checked = userResult.IsStudent;
-                    this.chkBoxCoach.Checked = userResult.IsCoach;
+                    // Find the user in the database
+                    var userQuery = from user in context.Users
+                                    where user.UserID.Equals(userId)
+                                    select user;
+
+                    // If the query returns a user, display the corresponding info in the form
+                    if (userQuery.Any())
+                    {
+                        var userResult = userQuery.FirstOrDefault();
+
+                        if (userResult != null)
+                        {
+                            this.txtID.Text = userResult.UserID;
+                            this.txtFirstName.Text = userResult.FirstName;
+                            this.txtLastName.Text = userResult.LastName;
+                            this.txtMiddleName.Text = userResult.MiddleName;
+                            this.txtDisplayName.Text = userResult.DisplayName;
+                            this.txtEmail.Text = userResult.Email;
+                            this.txtPhone.Text = userResult.Phone;
+                            this.chkActive.Checked = userResult.IsActive;
+                            this.chkAdmin.Checked = userResult.IsAdmin;
+                            this.chkSupervisor.Checked = userResult.IsSupervisor;   
+                        }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         /// <summary>
-        /// Add button clearing all text boxes and check boxes allowing user to populate.
+        /// Add button clears all text boxes and check boxes so user can enter new information.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
         private void BtnAddClick(object sender, EventArgs e)
         {
-            this.txtBoxFirstName.Text = string.Empty;
-            this.txtBoxLastName.Text = string.Empty;
-            this.txtBoxMiddleName.Text = string.Empty;
-            this.txtBoxUserID.Text = string.Empty;
-            this.txtBoxPassword.Text = string.Empty;
-            this.chkBoxActive.Checked = false;
-            this.chkBoxAdmin.Checked = false;
-            this.chkBoxCoach.Checked = false;
-            this.chkBoxStudent.Checked = false;
-            this.lstBoxUsers.Items.Add("First Name Middle Name Last Name");
-            this.lstBoxUsers.SelectedIndex = this.lstBoxUsers.Items.Count - 1;
-
-            this.txtBoxUserID.ReadOnly = false;
+            this.ClearAllFields();
         }
 
         /// <summary>
-        /// Submit button which submits the added or updated info to the database.
+        /// Submit button sends the added or updated info to the database.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
         private void BtnSubmitClick(object sender, EventArgs e)
         {
-            if (this.lstBoxUsers.SelectedItem.Equals("First Name Middle Name Last Name"))
+            try
             {
-                // adding user to the database.
+                // Run query to check for a corresponding user in the database
                 using (var context = new db_sft_2172Entities())
                 {
-                    User user = new User();
-                    user.FirstName = this.txtBoxFirstName.Text;
-                    user.MiddleName = this.txtBoxMiddleName.Text;
-                    user.LastName = this.txtBoxLastName.Text;
-                    user.UserID = this.txtBoxUserID.Text;
-                    user.Password = this.txtBoxPassword.Text;
-                    user.IsAdmin = this.chkBoxAdmin.Checked;
-                    user.IsActive = this.chkBoxActive.Checked;
-                    user.IsCoach = this.chkBoxCoach.Checked;
-                    user.IsStudent = this.chkBoxStudent.Checked;
-                    user.DisplayName = this.txtBoxFirstName.Text + " " + this.txtBoxMiddleName.Text + " " + this.txtBoxLastName.Text;
-                    user.ProfilePic = "http://i.imgur.com/X8XhA6M.png?1";
-
-                    var userQuery = context.Users.Add(user);
-                    context.SaveChanges();
-                }
-            }
-            else
-            {
-                // Query updates the user in the database
-                using (var context = new db_sft_2172Entities())
-                {
-                    string username = lstBoxUsers.SelectedItem.ToString();
-                    string[] userNameSplit = username.Split(' ');
-                    string usernum = userNameSplit[0];
-                    var userQuery = from u in context.Users
-                                    where u.UserID.Equals(usernum)
-                                    select u;
+                    string userId = this.txtID.Text;
+                    var userQuery = from user in context.Users
+                                    where user.UserID.Equals(userId)
+                                    select user;
 
                     if (userQuery.Any())
                     {
-                        var userResult = userQuery.FirstOrDefault<User>();
-
-                        User user = new User();
-                        userResult.FirstName = txtBoxFirstName.Text;
-                        userResult.MiddleName = txtBoxMiddleName.Text;
-                        userResult.LastName = txtBoxLastName.Text;
-                        userResult.UserID = txtBoxUserID.Text;
-                        userResult.Password = txtBoxPassword.Text;
-                        userResult.IsAdmin = chkBoxAdmin.Checked;
-                        userResult.IsActive = chkBoxActive.Checked;
-                        userResult.IsCoach = chkBoxCoach.Checked;
-                        userResult.IsStudent = chkBoxStudent.Checked;
-                        userResult.DisplayName = txtBoxFirstName.Text + " " + txtBoxMiddleName.Text + " " + txtBoxLastName.Text;
+                        var userResult = userQuery.FirstOrDefault();
+                        userResult.FirstName = this.txtFirstName.Text;
+                        userResult.MiddleName = this.txtMiddleName.Text;
+                        userResult.LastName = this.txtLastName.Text;
+                        userResult.DisplayName = this.txtDisplayName.Text;
+                        userResult.Phone = this.txtPhone.Text;
+                        userResult.Email = this.txtEmail.Text;
+                        userResult.IsActive = this.chkActive.Checked;
+                        userResult.IsAdmin = this.chkAdmin.Checked;
+                        userResult.IsSupervisor = this.chkSupervisor.Checked;
+                        
                         context.SaveChanges();
+
+                        MessageBox.Show(@"User Profile Updated");
+                    }
+                    else
+                    {
+                        User newUser = new User
+                        {
+                            UserID = this.txtID.Text,
+                            FirstName = this.txtFirstName.Text,
+                            MiddleName = this.txtMiddleName.Text,
+                            LastName = this.txtLastName.Text,
+                            DisplayName = this.txtDisplayName.Text,
+                            Phone = this.txtPhone.Text,
+                            Email = this.txtEmail.Text,
+                            IsActive = this.chkActive.Checked,
+                            IsAdmin = this.chkAdmin.Checked,
+                            IsSupervisor = this.chkSupervisor.Checked
+                        };
+
+                        context.Users.Add(newUser);
+                        context.SaveChanges();
+
+                        MessageBox.Show(@"User Profile Created");
+
+                        // If save is successful, update the user list and display the new user profile
+                        this.DisplayUsers();
+                        this.cbxChooseUser.SelectedValue = newUser.UserID;
                     }
                 }
             }
+            catch (DbUpdateException dbUEx)
+            {
+                MessageBox.Show(dbUEx.InnerException != null ? dbUEx.InnerException.Message : dbUEx.Message);
+                return;
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
 
             this.DisplayUsers();
-            this.ChkBoxClear();
-            this.txtBoxUserID.ReadOnly = true;
-            MessageBox.Show("User Profile Updated");
+            this.ClearAllFields();
+            MessageBox.Show(@"User Profile Updated");
         }
 
         /// <summary>
@@ -210,10 +234,9 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnMinusClick(object sender, EventArgs e)
         {
-            this.chkBoxAdmin.Checked = false;
-            this.chkBoxActive.Checked = false;
-            this.chkBoxCoach.Checked = false;
-            this.chkBoxStudent.Checked = false;
+            this.chkAdmin.Checked = false;
+            this.chkActive.Checked = false;
+            this.chkSupervisor.Checked = false;
         }
 
         /// <summary>
@@ -223,7 +246,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnResetPasswordClick(object sender, EventArgs e)
         {
-            string username = this.txtBoxUserID.Text;
+            string username = this.txtID.Text;
 
             ResetUserPasswordAdmin resetPasswordForm = new ResetUserPasswordAdmin(username);
             resetPasswordForm.ShowDialog();

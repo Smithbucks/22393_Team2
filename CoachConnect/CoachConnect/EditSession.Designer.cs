@@ -1,5 +1,5 @@
-﻿// <copyright file="EditSession.Designer.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="EditSession.Designer.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
@@ -9,24 +9,14 @@ namespace CoachConnect
     public partial class EditSession
     {
         /// <summary>
-        /// Label for the Course combo box
-        /// </summary>
-        private System.Windows.Forms.Label lblCourse;
-
-        /// <summary>
-        /// Combo box containing active courses
-        /// </summary>
-        private System.Windows.Forms.ComboBox cbxCourse;
-
-        /// <summary>
         /// Label for the Room combo box
         /// </summary>
-        private System.Windows.Forms.Label lblRoom;
+        private System.Windows.Forms.Label lblStartTime;
 
         /// <summary>
         /// Combo box containing active rooms
         /// </summary>
-        private System.Windows.Forms.ComboBox cbxRoom;
+        private System.Windows.Forms.ComboBox cbxStartTime;
 
         /// <summary>
         /// Label for the Day combo box
@@ -41,12 +31,12 @@ namespace CoachConnect
         /// <summary>
         /// Label for the Time combo box
         /// </summary>
-        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblEndTime;
 
         /// <summary>
         /// Combo box containing active Times
         /// </summary>
-        private System.Windows.Forms.ComboBox cbxTime;
+        private System.Windows.Forms.ComboBox cbxEndTime;
 
         /// <summary>
         /// Label for the Coach combo box
@@ -84,14 +74,9 @@ namespace CoachConnect
         private System.Windows.Forms.ComboBox cbxActive;
 
         /// <summary>
-        /// Validation label indicating a course was not selected
-        /// </summary>
-        private System.Windows.Forms.Label lblInvalidCourse;
-
-        /// <summary>
         /// Validation label indicating a room was not selected
         /// </summary>
-        private System.Windows.Forms.Label lblInvalidRoom;
+        private System.Windows.Forms.Label lblInvalidStartTime;
 
         /// <summary>
         /// Validation label indicating a day was not selected
@@ -101,12 +86,7 @@ namespace CoachConnect
         /// <summary>
         /// Validation label indicating a time was not selected
         /// </summary>
-        private System.Windows.Forms.Label lblInvalidTime;
-
-        /// <summary>
-        /// Validation label indicating a coach was not selected
-        /// </summary>
-        private System.Windows.Forms.Label lblInvalidCoach;
+        private System.Windows.Forms.Label lblInvalidEndTime;
 
         /// <summary>
         /// Validation label indicating an inactive value was not selected
@@ -114,29 +94,29 @@ namespace CoachConnect
         private System.Windows.Forms.Label lblInvalidActive;
 
         /// <summary>
-        /// A data grid to show the session roster
-        /// </summary>
-        private System.Windows.Forms.DataGridView dataGridViewRoster;
-
-        /// <summary>
-        /// A group box
-        /// </summary>
-        private System.Windows.Forms.GroupBox groupBox1;
-
-        /// <summary>
         /// Another group box
         /// </summary>
         private System.Windows.Forms.GroupBox groupBox2;
 
         /// <summary>
-        /// A button to remove a student from the roster
+        /// A validation label to indicate an invalid or non-selected coach
         /// </summary>
-        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label lblInvalidCoach;
 
         /// <summary>
-        /// A button to open a new form and select a student to add
+        /// A validation label to indicate an invalid or non-selected room
         /// </summary>
-        private System.Windows.Forms.Button btnAddToRoster;
+        private System.Windows.Forms.Label lblInvalidRoom;
+
+        /// <summary>
+        /// A label to mark the Room combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblRoom;
+
+        /// <summary>
+        /// A label to select the room location
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxRoom;
 
         /// <summary>
         /// Required designer variable.
@@ -166,14 +146,12 @@ namespace CoachConnect
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSession));
-            this.lblCourse = new System.Windows.Forms.Label();
-            this.cbxCourse = new System.Windows.Forms.ComboBox();
-            this.lblRoom = new System.Windows.Forms.Label();
-            this.cbxRoom = new System.Windows.Forms.ComboBox();
+            this.lblStartTime = new System.Windows.Forms.Label();
+            this.cbxStartTime = new System.Windows.Forms.ComboBox();
             this.lblDay = new System.Windows.Forms.Label();
             this.cbxDay = new System.Windows.Forms.ComboBox();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.cbxTime = new System.Windows.Forms.ComboBox();
+            this.lblEndTime = new System.Windows.Forms.Label();
+            this.cbxEndTime = new System.Windows.Forms.ComboBox();
             this.lblCoach = new System.Windows.Forms.Label();
             this.cbxCoach = new System.Windows.Forms.ComboBox();
             this.lblEditSessionHeader = new System.Windows.Forms.Label();
@@ -181,64 +159,40 @@ namespace CoachConnect
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblActive = new System.Windows.Forms.Label();
             this.cbxActive = new System.Windows.Forms.ComboBox();
-            this.lblInvalidCourse = new System.Windows.Forms.Label();
-            this.lblInvalidRoom = new System.Windows.Forms.Label();
+            this.lblInvalidStartTime = new System.Windows.Forms.Label();
             this.lblInvalidDay = new System.Windows.Forms.Label();
-            this.lblInvalidTime = new System.Windows.Forms.Label();
-            this.lblInvalidCoach = new System.Windows.Forms.Label();
+            this.lblInvalidEndTime = new System.Windows.Forms.Label();
             this.lblInvalidActive = new System.Windows.Forms.Label();
-            this.dataGridViewRoster = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.btnAddToRoster = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoster)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.lblInvalidRoom = new System.Windows.Forms.Label();
+            this.lblRoom = new System.Windows.Forms.Label();
+            this.cbxRoom = new System.Windows.Forms.ComboBox();
+            this.lblInvalidCoach = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblCourse
+            // lblStartTime
             // 
-            this.lblCourse.AutoSize = true;
-            this.lblCourse.Location = new System.Drawing.Point(18, 31);
-            this.lblCourse.Name = "lblCourse";
-            this.lblCourse.Size = new System.Drawing.Size(40, 13);
-            this.lblCourse.TabIndex = 3;
-            this.lblCourse.Text = "Course";
+            this.lblStartTime.AutoSize = true;
+            this.lblStartTime.Location = new System.Drawing.Point(18, 85);
+            this.lblStartTime.Name = "lblStartTime";
+            this.lblStartTime.Size = new System.Drawing.Size(55, 13);
+            this.lblStartTime.TabIndex = 5;
+            this.lblStartTime.Text = "Start Time";
             // 
-            // cbxCourse
+            // cbxStartTime
             // 
-            this.cbxCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCourse.FormattingEnabled = true;
-            this.cbxCourse.Location = new System.Drawing.Point(61, 28);
-            this.cbxCourse.Name = "cbxCourse";
-            this.cbxCourse.Size = new System.Drawing.Size(121, 21);
-            this.cbxCourse.TabIndex = 2;
-            this.cbxCourse.Leave += new System.EventHandler(this.CbxCourse_Leave);
-            // 
-            // lblRoom
-            // 
-            this.lblRoom.AutoSize = true;
-            this.lblRoom.Location = new System.Drawing.Point(18, 58);
-            this.lblRoom.Name = "lblRoom";
-            this.lblRoom.Size = new System.Drawing.Size(35, 13);
-            this.lblRoom.TabIndex = 5;
-            this.lblRoom.Text = "Room";
-            // 
-            // cbxRoom
-            // 
-            this.cbxRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxRoom.FormattingEnabled = true;
-            this.cbxRoom.Location = new System.Drawing.Point(61, 55);
-            this.cbxRoom.Name = "cbxRoom";
-            this.cbxRoom.Size = new System.Drawing.Size(121, 21);
-            this.cbxRoom.TabIndex = 4;
-            this.cbxRoom.Leave += new System.EventHandler(this.CbxRoom_Leave);
+            this.cbxStartTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxStartTime.FormattingEnabled = true;
+            this.cbxStartTime.Location = new System.Drawing.Point(79, 82);
+            this.cbxStartTime.Name = "cbxStartTime";
+            this.cbxStartTime.Size = new System.Drawing.Size(121, 21);
+            this.cbxStartTime.TabIndex = 4;
             // 
             // lblDay
             // 
             this.lblDay.AutoSize = true;
-            this.lblDay.Location = new System.Drawing.Point(18, 87);
+            this.lblDay.Location = new System.Drawing.Point(18, 58);
             this.lblDay.Name = "lblDay";
             this.lblDay.Size = new System.Drawing.Size(26, 13);
             this.lblDay.TabIndex = 7;
@@ -248,35 +202,33 @@ namespace CoachConnect
             // 
             this.cbxDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDay.FormattingEnabled = true;
-            this.cbxDay.Location = new System.Drawing.Point(61, 84);
+            this.cbxDay.Location = new System.Drawing.Point(79, 55);
             this.cbxDay.Name = "cbxDay";
             this.cbxDay.Size = new System.Drawing.Size(121, 21);
             this.cbxDay.TabIndex = 6;
-            this.cbxDay.Leave += new System.EventHandler(this.CbxDay_Leave);
             // 
-            // lblTime
+            // lblEndTime
             // 
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(18, 114);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(30, 13);
-            this.lblTime.TabIndex = 9;
-            this.lblTime.Text = "Time";
+            this.lblEndTime.AutoSize = true;
+            this.lblEndTime.Location = new System.Drawing.Point(18, 112);
+            this.lblEndTime.Name = "lblEndTime";
+            this.lblEndTime.Size = new System.Drawing.Size(52, 13);
+            this.lblEndTime.TabIndex = 9;
+            this.lblEndTime.Text = "End Time";
             // 
-            // cbxTime
+            // cbxEndTime
             // 
-            this.cbxTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxTime.FormattingEnabled = true;
-            this.cbxTime.Location = new System.Drawing.Point(61, 111);
-            this.cbxTime.Name = "cbxTime";
-            this.cbxTime.Size = new System.Drawing.Size(121, 21);
-            this.cbxTime.TabIndex = 8;
-            this.cbxTime.Leave += new System.EventHandler(this.CbxTime_Leave);
+            this.cbxEndTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEndTime.FormattingEnabled = true;
+            this.cbxEndTime.Location = new System.Drawing.Point(79, 109);
+            this.cbxEndTime.Name = "cbxEndTime";
+            this.cbxEndTime.Size = new System.Drawing.Size(121, 21);
+            this.cbxEndTime.TabIndex = 8;
             // 
             // lblCoach
             // 
             this.lblCoach.AutoSize = true;
-            this.lblCoach.Location = new System.Drawing.Point(18, 141);
+            this.lblCoach.Location = new System.Drawing.Point(18, 31);
             this.lblCoach.Name = "lblCoach";
             this.lblCoach.Size = new System.Drawing.Size(38, 13);
             this.lblCoach.TabIndex = 11;
@@ -286,17 +238,16 @@ namespace CoachConnect
             // 
             this.cbxCoach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCoach.FormattingEnabled = true;
-            this.cbxCoach.Location = new System.Drawing.Point(61, 138);
+            this.cbxCoach.Location = new System.Drawing.Point(79, 28);
             this.cbxCoach.Name = "cbxCoach";
             this.cbxCoach.Size = new System.Drawing.Size(121, 21);
             this.cbxCoach.TabIndex = 10;
-            this.cbxCoach.Leave += new System.EventHandler(this.CbxCoach_Leave);
             // 
             // lblEditSessionHeader
             // 
             this.lblEditSessionHeader.AutoSize = true;
             this.lblEditSessionHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblEditSessionHeader.Location = new System.Drawing.Point(234, 9);
+            this.lblEditSessionHeader.Location = new System.Drawing.Point(117, 9);
             this.lblEditSessionHeader.Name = "lblEditSessionHeader";
             this.lblEditSessionHeader.Size = new System.Drawing.Size(114, 24);
             this.lblEditSessionHeader.TabIndex = 12;
@@ -304,7 +255,7 @@ namespace CoachConnect
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(219, 261);
+            this.btnSave.Location = new System.Drawing.Point(11, 250);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 13;
@@ -314,7 +265,7 @@ namespace CoachConnect
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(317, 261);
+            this.btnCancel.Location = new System.Drawing.Point(262, 250);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 14;
@@ -338,41 +289,28 @@ namespace CoachConnect
             this.cbxActive.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbxActive.Location = new System.Drawing.Point(61, 165);
+            this.cbxActive.Location = new System.Drawing.Point(79, 163);
             this.cbxActive.Name = "cbxActive";
             this.cbxActive.Size = new System.Drawing.Size(121, 21);
             this.cbxActive.TabIndex = 15;
-            this.cbxActive.Leave += new System.EventHandler(this.CbxActive_Leave);
             // 
-            // lblInvalidCourse
+            // lblInvalidStartTime
             // 
-            this.lblInvalidCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvalidCourse.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidCourse.Location = new System.Drawing.Point(188, 31);
-            this.lblInvalidCourse.Name = "lblInvalidCourse";
-            this.lblInvalidCourse.Size = new System.Drawing.Size(75, 13);
-            this.lblInvalidCourse.TabIndex = 25;
-            this.lblInvalidCourse.Text = "Invalid Course";
-            this.lblInvalidCourse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblInvalidCourse.Visible = false;
-            // 
-            // lblInvalidRoom
-            // 
-            this.lblInvalidRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvalidRoom.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidRoom.Location = new System.Drawing.Point(188, 58);
-            this.lblInvalidRoom.Name = "lblInvalidRoom";
-            this.lblInvalidRoom.Size = new System.Drawing.Size(75, 13);
-            this.lblInvalidRoom.TabIndex = 26;
-            this.lblInvalidRoom.Text = "Invalid Room";
-            this.lblInvalidRoom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblInvalidRoom.Visible = false;
+            this.lblInvalidStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvalidStartTime.ForeColor = System.Drawing.Color.Red;
+            this.lblInvalidStartTime.Location = new System.Drawing.Point(206, 82);
+            this.lblInvalidStartTime.Name = "lblInvalidStartTime";
+            this.lblInvalidStartTime.Size = new System.Drawing.Size(90, 18);
+            this.lblInvalidStartTime.TabIndex = 26;
+            this.lblInvalidStartTime.Text = "Invalid Start Time";
+            this.lblInvalidStartTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblInvalidStartTime.Visible = false;
             // 
             // lblInvalidDay
             // 
             this.lblInvalidDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidDay.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidDay.Location = new System.Drawing.Point(188, 87);
+            this.lblInvalidDay.Location = new System.Drawing.Point(206, 58);
             this.lblInvalidDay.Name = "lblInvalidDay";
             this.lblInvalidDay.Size = new System.Drawing.Size(75, 13);
             this.lblInvalidDay.TabIndex = 27;
@@ -380,35 +318,23 @@ namespace CoachConnect
             this.lblInvalidDay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblInvalidDay.Visible = false;
             // 
-            // lblInvalidTime
+            // lblInvalidEndTime
             // 
-            this.lblInvalidTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvalidTime.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidTime.Location = new System.Drawing.Point(188, 114);
-            this.lblInvalidTime.Name = "lblInvalidTime";
-            this.lblInvalidTime.Size = new System.Drawing.Size(75, 13);
-            this.lblInvalidTime.TabIndex = 28;
-            this.lblInvalidTime.Text = "Invalid Time";
-            this.lblInvalidTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblInvalidTime.Visible = false;
-            // 
-            // lblInvalidCoach
-            // 
-            this.lblInvalidCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvalidCoach.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidCoach.Location = new System.Drawing.Point(188, 138);
-            this.lblInvalidCoach.Name = "lblInvalidCoach";
-            this.lblInvalidCoach.Size = new System.Drawing.Size(75, 18);
-            this.lblInvalidCoach.TabIndex = 29;
-            this.lblInvalidCoach.Text = "Invalid Coach";
-            this.lblInvalidCoach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblInvalidCoach.Visible = false;
+            this.lblInvalidEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvalidEndTime.ForeColor = System.Drawing.Color.Red;
+            this.lblInvalidEndTime.Location = new System.Drawing.Point(206, 112);
+            this.lblInvalidEndTime.Name = "lblInvalidEndTime";
+            this.lblInvalidEndTime.Size = new System.Drawing.Size(90, 13);
+            this.lblInvalidEndTime.TabIndex = 28;
+            this.lblInvalidEndTime.Text = "Invalid End Time";
+            this.lblInvalidEndTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblInvalidEndTime.Visible = false;
             // 
             // lblInvalidActive
             // 
             this.lblInvalidActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidActive.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidActive.Location = new System.Drawing.Point(188, 164);
+            this.lblInvalidActive.Location = new System.Drawing.Point(206, 164);
             this.lblInvalidActive.Name = "lblInvalidActive";
             this.lblInvalidActive.Size = new System.Drawing.Size(75, 20);
             this.lblInvalidActive.TabIndex = 30;
@@ -416,92 +342,91 @@ namespace CoachConnect
             this.lblInvalidActive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblInvalidActive.Visible = false;
             // 
-            // dataGridViewRoster
-            // 
-            this.dataGridViewRoster.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewRoster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRoster.Location = new System.Drawing.Point(12, 28);
-            this.dataGridViewRoster.MultiSelect = false;
-            this.dataGridViewRoster.Name = "dataGridViewRoster";
-            this.dataGridViewRoster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewRoster.Size = new System.Drawing.Size(270, 136);
-            this.dataGridViewRoster.TabIndex = 31;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.btnRemove);
-            this.groupBox1.Controls.Add(this.btnAddToRoster);
-            this.groupBox1.Controls.Add(this.dataGridViewRoster);
-            this.groupBox1.Location = new System.Drawing.Point(300, 44);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(295, 205);
-            this.groupBox1.TabIndex = 32;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Session Roster";
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Location = new System.Drawing.Point(207, 170);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(75, 23);
-            this.btnRemove.TabIndex = 34;
-            this.btnRemove.Text = "Remove";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
-            // 
-            // btnAddToRoster
-            // 
-            this.btnAddToRoster.Location = new System.Drawing.Point(12, 173);
-            this.btnAddToRoster.Name = "btnAddToRoster";
-            this.btnAddToRoster.Size = new System.Drawing.Size(86, 23);
-            this.btnAddToRoster.TabIndex = 33;
-            this.btnAddToRoster.Text = "Add To Roster";
-            this.btnAddToRoster.UseVisualStyleBackColor = true;
-            this.btnAddToRoster.Click += new System.EventHandler(this.BtnAddToRoster_Click);
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblInvalidRoom);
+            this.groupBox2.Controls.Add(this.lblRoom);
+            this.groupBox2.Controls.Add(this.cbxRoom);
             this.groupBox2.Controls.Add(this.lblInvalidActive);
             this.groupBox2.Controls.Add(this.lblInvalidCoach);
-            this.groupBox2.Controls.Add(this.lblInvalidTime);
+            this.groupBox2.Controls.Add(this.lblInvalidEndTime);
             this.groupBox2.Controls.Add(this.lblInvalidDay);
-            this.groupBox2.Controls.Add(this.lblInvalidRoom);
-            this.groupBox2.Controls.Add(this.lblInvalidCourse);
+            this.groupBox2.Controls.Add(this.lblInvalidStartTime);
             this.groupBox2.Controls.Add(this.lblActive);
+            this.groupBox2.Controls.Add(this.cbxDay);
+            this.groupBox2.Controls.Add(this.lblDay);
             this.groupBox2.Controls.Add(this.cbxActive);
             this.groupBox2.Controls.Add(this.lblCoach);
             this.groupBox2.Controls.Add(this.cbxCoach);
-            this.groupBox2.Controls.Add(this.lblTime);
-            this.groupBox2.Controls.Add(this.cbxTime);
-            this.groupBox2.Controls.Add(this.lblDay);
-            this.groupBox2.Controls.Add(this.cbxDay);
-            this.groupBox2.Controls.Add(this.lblRoom);
-            this.groupBox2.Controls.Add(this.cbxRoom);
-            this.groupBox2.Controls.Add(this.lblCourse);
-            this.groupBox2.Controls.Add(this.cbxCourse);
+            this.groupBox2.Controls.Add(this.lblEndTime);
+            this.groupBox2.Controls.Add(this.cbxEndTime);
+            this.groupBox2.Controls.Add(this.lblStartTime);
+            this.groupBox2.Controls.Add(this.cbxStartTime);
             this.groupBox2.Location = new System.Drawing.Point(16, 44);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(269, 205);
+            this.groupBox2.Size = new System.Drawing.Size(321, 200);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Session Details";
+            // 
+            // lblInvalidRoom
+            // 
+            this.lblInvalidRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvalidRoom.ForeColor = System.Drawing.Color.Red;
+            this.lblInvalidRoom.Location = new System.Drawing.Point(206, 135);
+            this.lblInvalidRoom.Name = "lblInvalidRoom";
+            this.lblInvalidRoom.Size = new System.Drawing.Size(75, 20);
+            this.lblInvalidRoom.TabIndex = 33;
+            this.lblInvalidRoom.Text = "Invalid Room";
+            this.lblInvalidRoom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblInvalidRoom.Visible = false;
+            // 
+            // lblRoom
+            // 
+            this.lblRoom.AutoSize = true;
+            this.lblRoom.Location = new System.Drawing.Point(18, 139);
+            this.lblRoom.Name = "lblRoom";
+            this.lblRoom.Size = new System.Drawing.Size(35, 13);
+            this.lblRoom.TabIndex = 32;
+            this.lblRoom.Text = "Room";
+            // 
+            // cbxRoom
+            // 
+            this.cbxRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxRoom.FormattingEnabled = true;
+            this.cbxRoom.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.cbxRoom.Location = new System.Drawing.Point(79, 136);
+            this.cbxRoom.Name = "cbxRoom";
+            this.cbxRoom.Size = new System.Drawing.Size(121, 21);
+            this.cbxRoom.TabIndex = 31;
+            // 
+            // lblInvalidCoach
+            // 
+            this.lblInvalidCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvalidCoach.ForeColor = System.Drawing.Color.Red;
+            this.lblInvalidCoach.Location = new System.Drawing.Point(206, 28);
+            this.lblInvalidCoach.Name = "lblInvalidCoach";
+            this.lblInvalidCoach.Size = new System.Drawing.Size(75, 18);
+            this.lblInvalidCoach.TabIndex = 29;
+            this.lblInvalidCoach.Text = "Invalid Coach";
+            this.lblInvalidCoach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblInvalidCoach.Visible = false;
             // 
             // EditSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 300);
+            this.ClientSize = new System.Drawing.Size(352, 285);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblEditSessionHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditSession";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EditSession";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoster)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.Text = "Edit Session";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

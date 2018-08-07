@@ -17,36 +17,27 @@ namespace CoachConnect
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.UserAvailabilities = new HashSet<UserAvailability>();
-            this.UserCourses = new HashSet<UserCourse>();
-            this.Sessions = new HashSet<Session>();
-            this.SessionRosters = new HashSet<SessionRoster>();
+            this.Coaches = new HashSet<Coach>();
+            this.CoachSessions = new HashSet<CoachSession>();
         }
     
         public string UserID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public bool IsAdmin { get; set; }
-        public bool IsCoach { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
-        public bool IsStudent { get; set; }
-        public string ProfilePic { get; set; }
-        public Nullable<System.DateTime> ActiveCoachSince { get; set; }
         public string MiddleName { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string DisplayName { get; set; }
-        public bool ResetPassword { get; set; }
+        public string ResetPassword { get; set; }
         public string PasswordSalt { get; set; }
+        public bool IsSupervisor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserAvailability> UserAvailabilities { get; set; }
+        public virtual ICollection<Coach> Coaches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserCourse> UserCourses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Session> Sessions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionRoster> SessionRosters { get; set; }
+        public virtual ICollection<CoachSession> CoachSessions { get; set; }
     }
 }

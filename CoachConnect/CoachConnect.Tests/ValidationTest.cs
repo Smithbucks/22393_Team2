@@ -1,8 +1,6 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="ValidationTest.cs" company="PABT,Inc">
-//     Copyright (c) Pabt, Inc. All rights reserved
+﻿// <copyright file="ValidationTest.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
-//-----------------------------------------------------------------------
 
 namespace CoachConnect.Tests
 {
