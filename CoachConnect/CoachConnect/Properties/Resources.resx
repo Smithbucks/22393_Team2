@@ -118,49 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="education-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\education-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="stem-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stem-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="energy-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\energy-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="business-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\business-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="health-science-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\health-science-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="transportation-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\transportation-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="archi-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\archi-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="correct1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\correct1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="digital-arts-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\digital-arts-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="public-safety-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\public-safety-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="general-studies-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\general-studies-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="manufacturing-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\manufacturing-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="it-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\it-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="agri-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\agri-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="wrong" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wrong.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="currentCoachScheduleTEMPLATE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\currentcoachscheduletemplate.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

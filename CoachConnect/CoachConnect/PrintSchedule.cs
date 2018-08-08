@@ -123,7 +123,7 @@ namespace CoachConnect
             {
                 // Get filepaths for current Resources folder (needed to get Excel template file)
                 DirectoryInfo dirinfo = new DirectoryInfo(Directory.GetCurrentDirectory());
-                string temp = dirinfo.Parent.Parent.FullName;
+                string temp = dirinfo.FullName;
                 string excelPath = Path.Combine(temp, "Resources", "currentCoachScheduleTEMPLATE.xlsx");
 
                 // creating Excel Application  
