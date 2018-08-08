@@ -315,6 +315,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\currentCoachScheduleTEMPLATE.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <None Include="Resources\transportation-icon.png" />
     <None Include="Resources\stem-icon.png" />
     <None Include="Resources\public-safety-icon.png" />

@@ -6,6 +6,7 @@ namespace CoachConnect
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
+    using System.IO;
     using System.Linq;
     using System.Windows.Forms;
     using Microsoft.Office.Interop.Excel;
@@ -118,17 +119,18 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnSaveScheduleToExcel_Click(object sender, EventArgs e)
         {
-            string currentUsername = Environment.UserName;
-
             try
             {
+                // Get filepaths for current Resources folder (needed to get Excel template file)
+                DirectoryInfo dirinfo = new DirectoryInfo(Directory.GetCurrentDirectory());
+                string temp = dirinfo.Parent.Parent.FullName;
+                string excelPath = Path.Combine(temp, "Resources", "currentCoachScheduleTEMPLATE.xlsx");
+
                 // creating Excel Application  
                 _Application app = new Microsoft.Office.Interop.Excel.Application();
 
                 // creating new WorkBook within Excel application  
-                _Workbook workbook =
-                    app.Workbooks.Open("c:\\users\\" + currentUsername +
-                                       "\\Documents\\currentCoachScheduleTEMPLATE.xlsx");
+                _Workbook workbook = app.Workbooks.Open(excelPath);
 
                 // creating new Excelsheet in workbook  
                 // see the excel sheet behind the program  
@@ -142,7 +144,7 @@ namespace CoachConnect
                 // storing header part in Excel  
                 for (int i = 1; i < this.dataGridViewSchedule.Columns.Count + 1; i++)
                 {
-                    worksheet.Cells[1, i] = this.dataGridViewSchedule.Columns[i - 1].HeaderText;
+                    worksheet.Cells[4, i] = this.dataGridViewSchedule.Columns[i - 1].HeaderText;
                 }
 
                 // storing Each row and column value to excel sheet  
@@ -152,17 +154,18 @@ namespace CoachConnect
                     {
                         if (this.dataGridViewSchedule.Rows[i].Cells[j].Value == null)
                         {
-                            worksheet.Cells[i + 2, j + 1] = null;
+                            worksheet.Cells[i + 5, j + 1] = null;
                         }
                         else
                         {
-                            worksheet.Cells[i + 2, j + 1] = this.dataGridViewSchedule.Rows[i].Cells[j].Value.ToString();
+                            worksheet.Cells[i + 5, j + 1] = this.dataGridViewSchedule.Rows[i].Cells[j].Value.ToString();
                         }
 
-                        worksheet.Cells[i + 2, j + 1].WrapText = true;
+                        worksheet.Cells[i + 5, j + 1].WrapText = true;
                     }
                 }
 
+                /*
                 // save the application  
                 workbook.SaveAs(
                     "c:\\users\\" + currentUsername + "\\Documents\\currentCoachSchedule.xlsx",
@@ -179,6 +182,7 @@ namespace CoachConnect
 
                 // Exit from the application  
                 app.Quit();
+                */
             }
             catch (SqlException sqlEx)
             {

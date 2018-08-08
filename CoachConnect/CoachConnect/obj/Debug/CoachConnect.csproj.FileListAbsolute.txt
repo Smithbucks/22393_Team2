@@ -228,3 +228,8 @@ C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debu
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.CopyComplete
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.manifest
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\CoachConnect.application
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe.manifest
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.application
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\Resources\currentCoachScheduleTEMPLATE.xlsx
