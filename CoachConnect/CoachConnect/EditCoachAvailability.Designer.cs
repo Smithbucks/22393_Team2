@@ -128,7 +128,6 @@ namespace CoachConnect
             // 
             // cbxStartTime
             // 
-            this.cbxStartTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStartTime.FormattingEnabled = true;
             this.cbxStartTime.Location = new System.Drawing.Point(79, 59);
             this.cbxStartTime.Name = "cbxStartTime";
@@ -147,7 +146,6 @@ namespace CoachConnect
             // 
             // cbxDay
             // 
-            this.cbxDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDay.FormattingEnabled = true;
             this.cbxDay.Location = new System.Drawing.Point(79, 32);
             this.cbxDay.Name = "cbxDay";
@@ -166,7 +164,6 @@ namespace CoachConnect
             // 
             // cbxEndTime
             // 
-            this.cbxEndTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEndTime.FormattingEnabled = true;
             this.cbxEndTime.Location = new System.Drawing.Point(79, 86);
             this.cbxEndTime.Name = "cbxEndTime";
