@@ -289,7 +289,6 @@ namespace CoachConnect
             // 
             // btnApply
             // 
-            this.btnApply.Enabled = false;
             this.btnApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnApply.Location = new System.Drawing.Point(145, 477);
             this.btnApply.Name = "btnApply";
