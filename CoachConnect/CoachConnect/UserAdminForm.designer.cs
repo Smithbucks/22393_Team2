@@ -427,7 +427,6 @@ namespace CoachConnect
             // 
             // txtDisplayName
             // 
-            this.txtDisplayName.Enabled = false;
             this.txtDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDisplayName.Location = new System.Drawing.Point(99, 165);
             this.txtDisplayName.Name = "txtDisplayName";
