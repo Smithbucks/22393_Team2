@@ -260,9 +260,56 @@ namespace CoachConnect
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                // Query updates the user in the database
+                using (var context = new db_sft_2172Entities())
+                {
+                    string coachId = this.txtID.Text;
+                    var coachQuery = from coach in context.Coaches
+                        where coach.CoachID.Equals(coachId)
+                        select coach;
+
+                    if (coachQuery.Any())
+                    {
+                        var coachResult = coachQuery.FirstOrDefault();
+
+                        if (coachResult.FirstName != this.txtFirstName.Text ||
+                            coachResult.MiddleName != this.txtMiddleName.Text ||
+                            coachResult.LastName != this.txtLastName.Text ||
+                            coachResult.DisplayName != this.txtDisplayName.Text ||
+                            coachResult.Phone != this.txtPhone.Text ||
+                            coachResult.Email != this.txtEmail.Text ||
+                            coachResult.IsActive != this.chkActive.Checked ||
+                            coachResult.SupervisorID != this.cbxSupervisor.SelectedIndex.ToString())
+                        {
+
+                            DialogResult cancelChoice = MessageBox.Show(
+                                "Closing this window will remove all changes.  Do you want to continue?",
+                                "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                            if (cancelChoice == DialogResult.Yes)
+                            {
+                                this.Close();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (DbUpdateException dbUEx)
+            {
+                MessageBox.Show(dbUEx.InnerException != null ? dbUEx.InnerException.Message : dbUEx.Message);
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

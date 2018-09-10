@@ -96,7 +96,6 @@ namespace CoachConnect
             }
 
             // Get data from form and insert into current Session object
-            this.CurrentSession.RoomID = this.cbxRoom.SelectedValue.ToString();
             this.CurrentSession.DayID = this.cbxDay.SelectedValue.ToString();
             this.CurrentSession.CoachID = this.cbxCoach.SelectedValue.ToString();
 
@@ -142,7 +141,8 @@ namespace CoachConnect
                     else
                     {
                         MessageBox.Show(
-                            @"Sorry, the desired coach is not available for the selected day/time.\nPlease select another combination!");
+                            @"Sorry, the desired coach is not available for the selected day/time." 
+                            + Environment.NewLine + @"Please select another combination!");
 
                         return;
                     }
@@ -181,10 +181,6 @@ namespace CoachConnect
                 using (var context = new db_sft_2172Entities())
                 {
                     // Run queries to get combo box data
-                    var roomQuery = from rooms in context.Rooms
-                                    orderby rooms.RoomID
-                                    select rooms;
-
                     var dayQuery = from days in context.Days
                                    orderby days.SortOrder
                                    select days;
@@ -202,7 +198,6 @@ namespace CoachConnect
                                      select coaches;
 
                     // Convert query results to lists
-                    List<Room> roomList = roomQuery.ToList();
                     List<Day> dayList = dayQuery.ToList();
                     List<Time> startTimeList = startTimeQuery.ToList();
                     List<Time> endTimeList = endTimeQuery.ToList();
@@ -225,15 +220,10 @@ namespace CoachConnect
                     this.cbxEndTime.ValueMember = "Time1";
                     this.cbxEndTime.DisplayMember = "TimeName";
 
-                    this.cbxRoom.DataSource = roomList;
-                    this.cbxRoom.ValueMember = "RoomID";
-                    this.cbxRoom.DisplayMember = "RoomNumber";
-
                     this.cbxCoach.SelectedIndex = -1;
                     this.cbxDay.SelectedIndex = -1;
                     this.cbxStartTime.SelectedIndex = -1;
                     this.cbxEndTime.SelectedIndex = -1;
-                    this.cbxRoom.SelectedIndex = -1;
                     this.cbxActive.SelectedIndex = -1;
                 }
             }
@@ -287,7 +277,6 @@ namespace CoachConnect
             this.cbxDay.SelectedValue = this.CurrentSession.DayID;
             this.cbxStartTime.SelectedValue = this.CurrentSession.StartTime;
             this.cbxEndTime.SelectedValue = this.CurrentSession.EndTime;
-            this.cbxRoom.SelectedValue = this.CurrentSession.RoomID;
 
             this.cbxActive.SelectedIndex = this.CurrentSession.Active ? 0 : 1;
         }
@@ -346,7 +335,6 @@ namespace CoachConnect
                         CoachSession foundSession = sessionQuery.FirstOrDefault();
 
                         // Update database records
-                        foundSession.RoomID = this.CurrentSession.RoomID;
                         foundSession.DayID = this.CurrentSession.DayID;
                         foundSession.StartTime = this.CurrentSession.StartTime;
                         foundSession.EndTime = this.CurrentSession.EndTime;
@@ -359,7 +347,8 @@ namespace CoachConnect
                     else
                     {
                         MessageBox.Show(
-                            @"Sorry, a matching session was not found in the database.\nPlease try again or contact an administrator for assistance.");
+                            @"Sorry, a matching session was not found in the database."
+                            + Environment.NewLine + @"Please try again or contact an administrator for assistance.");
                     }
                 }
             }

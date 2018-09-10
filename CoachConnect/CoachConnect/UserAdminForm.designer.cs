@@ -64,14 +64,9 @@ namespace CoachConnect
         private System.Windows.Forms.CheckBox chkActive;
 
         /// <summary>
-        /// A button to set the current selected user as Inactive
-        /// </summary>
-        private System.Windows.Forms.Button btnMinus;
-
-        /// <summary>
         /// A button to submit user profile changes
         /// </summary>
-        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnSave;
 
         /// <summary>
         /// A button to reset the current user's password
@@ -141,7 +136,7 @@ namespace CoachConnect
         /// <summary>
         /// Button to apply changes to the database
         /// </summary>
-        private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.Button btnCancel;
 
         /// <summary>
         /// Required designer variable.
@@ -182,8 +177,7 @@ namespace CoachConnect
             this.chkSupervisor = new System.Windows.Forms.CheckBox();
             this.chkAdmin = new System.Windows.Forms.CheckBox();
             this.chkActive = new System.Windows.Forms.CheckBox();
-            this.btnMinus = new System.Windows.Forms.Button();
-            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnResetUserPassword = new System.Windows.Forms.Button();
             this.cbxChooseUser = new System.Windows.Forms.ComboBox();
             this.lblChooseUser = new System.Windows.Forms.Label();
@@ -197,7 +191,7 @@ namespace CoachConnect
             this.lblID = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnApply = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -205,7 +199,7 @@ namespace CoachConnect
             // 
             this.lblAdminForm.AutoSize = true;
             this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminForm.Location = new System.Drawing.Point(58, 20);
+            this.lblAdminForm.Location = new System.Drawing.Point(62, 20);
             this.lblAdminForm.Name = "lblAdminForm";
             this.lblAdminForm.Size = new System.Drawing.Size(220, 31);
             this.lblAdminForm.TabIndex = 7;
@@ -309,32 +303,21 @@ namespace CoachConnect
             this.chkActive.Text = "Active";
             this.chkActive.UseVisualStyleBackColor = true;
             // 
-            // btnMinus
+            // btnSave
             // 
-            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinus.Location = new System.Drawing.Point(227, 428);
-            this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(108, 22);
-            this.btnMinus.TabIndex = 2;
-            this.btnMinus.Text = "Disable User";
-            this.btnMinus.UseVisualStyleBackColor = true;
-            this.btnMinus.Click += new System.EventHandler(this.BtnMinusClick);
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(249, 456);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(86, 22);
-            this.btnSubmit.TabIndex = 12;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.BtnSubmitClick);
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(19, 456);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(126, 22);
+            this.btnSave.TabIndex = 12;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSubmitClick);
             // 
             // btnResetUserPassword
             // 
             this.btnResetUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetUserPassword.Location = new System.Drawing.Point(19, 456);
+            this.btnResetUserPassword.Location = new System.Drawing.Point(209, 428);
             this.btnResetUserPassword.Name = "btnResetUserPassword";
             this.btnResetUserPassword.Size = new System.Drawing.Size(126, 22);
             this.btnResetUserPassword.TabIndex = 49;
@@ -392,7 +375,7 @@ namespace CoachConnect
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(98, 235);
+            this.txtEmail.Location = new System.Drawing.Point(102, 235);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(188, 20);
             this.txtEmail.TabIndex = 61;
@@ -401,7 +384,7 @@ namespace CoachConnect
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(61, 238);
+            this.lblEmail.Location = new System.Drawing.Point(64, 238);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 63;
@@ -410,7 +393,7 @@ namespace CoachConnect
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(98, 200);
+            this.txtPhone.Location = new System.Drawing.Point(102, 200);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(188, 20);
             this.txtPhone.TabIndex = 60;
@@ -419,7 +402,7 @@ namespace CoachConnect
             // 
             this.lblPhone.AutoSize = true;
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(55, 203);
+            this.lblPhone.Location = new System.Drawing.Point(58, 203);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(38, 13);
             this.lblPhone.TabIndex = 62;
@@ -428,7 +411,7 @@ namespace CoachConnect
             // txtDisplayName
             // 
             this.txtDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDisplayName.Location = new System.Drawing.Point(99, 165);
+            this.txtDisplayName.Location = new System.Drawing.Point(102, 165);
             this.txtDisplayName.Name = "txtDisplayName";
             this.txtDisplayName.Size = new System.Drawing.Size(188, 20);
             this.txtDisplayName.TabIndex = 58;
@@ -437,7 +420,7 @@ namespace CoachConnect
             // 
             this.lblDisplayName.AutoSize = true;
             this.lblDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDisplayName.Location = new System.Drawing.Point(21, 168);
+            this.lblDisplayName.Location = new System.Drawing.Point(24, 168);
             this.lblDisplayName.Name = "lblDisplayName";
             this.lblDisplayName.Size = new System.Drawing.Size(72, 13);
             this.lblDisplayName.TabIndex = 59;
@@ -467,42 +450,41 @@ namespace CoachConnect
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(19, 428);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(108, 22);
+            this.btnAdd.Size = new System.Drawing.Size(126, 22);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add User";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.BtnAddClick);
             // 
-            // btnApply
+            // btnCancel
             // 
-            this.btnApply.Enabled = false;
-            this.btnApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApply.Location = new System.Drawing.Point(157, 456);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(86, 22);
-            this.btnApply.TabIndex = 58;
-            this.btnApply.Text = "Apply Changes";
-            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(209, 456);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(126, 22);
+            this.btnCancel.TabIndex = 58;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(354, 499);
-            this.Controls.Add(this.btnApply);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbxChooseUser);
             this.Controls.Add(this.lblChooseUser);
             this.Controls.Add(this.btnResetUserPassword);
-            this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblUserID);
             this.Controls.Add(this.lblAdminForm);
             this.Font = new System.Drawing.Font("MV Boli", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserProfileForm";
-            this.Text = "User Admin";
+            this.Text = "Update User Information";
             this.Load += new System.EventHandler(this.UserAdminFormLoad);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

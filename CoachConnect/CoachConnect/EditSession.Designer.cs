@@ -104,21 +104,6 @@ namespace CoachConnect
         private System.Windows.Forms.Label lblInvalidCoach;
 
         /// <summary>
-        /// A validation label to indicate an invalid or non-selected room
-        /// </summary>
-        private System.Windows.Forms.Label lblInvalidRoom;
-
-        /// <summary>
-        /// A label to mark the Room combo box
-        /// </summary>
-        private System.Windows.Forms.Label lblRoom;
-
-        /// <summary>
-        /// A label to select the room location
-        /// </summary>
-        private System.Windows.Forms.ComboBox cbxRoom;
-
-        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
@@ -164,9 +149,6 @@ namespace CoachConnect
             this.lblInvalidEndTime = new System.Windows.Forms.Label();
             this.lblInvalidActive = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblInvalidRoom = new System.Windows.Forms.Label();
-            this.lblRoom = new System.Windows.Forms.Label();
-            this.cbxRoom = new System.Windows.Forms.ComboBox();
             this.lblInvalidCoach = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -251,7 +233,7 @@ namespace CoachConnect
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(11, 250);
+            this.btnSave.Location = new System.Drawing.Point(11, 225);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 13;
@@ -261,7 +243,7 @@ namespace CoachConnect
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(262, 250);
+            this.btnCancel.Location = new System.Drawing.Point(262, 225);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 14;
@@ -272,7 +254,7 @@ namespace CoachConnect
             // lblActive
             // 
             this.lblActive.AutoSize = true;
-            this.lblActive.Location = new System.Drawing.Point(18, 168);
+            this.lblActive.Location = new System.Drawing.Point(19, 142);
             this.lblActive.Name = "lblActive";
             this.lblActive.Size = new System.Drawing.Size(37, 13);
             this.lblActive.TabIndex = 16;
@@ -284,7 +266,7 @@ namespace CoachConnect
             this.cbxActive.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbxActive.Location = new System.Drawing.Point(79, 163);
+            this.cbxActive.Location = new System.Drawing.Point(80, 137);
             this.cbxActive.Name = "cbxActive";
             this.cbxActive.Size = new System.Drawing.Size(121, 21);
             this.cbxActive.TabIndex = 15;
@@ -329,7 +311,7 @@ namespace CoachConnect
             // 
             this.lblInvalidActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidActive.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidActive.Location = new System.Drawing.Point(206, 164);
+            this.lblInvalidActive.Location = new System.Drawing.Point(207, 138);
             this.lblInvalidActive.Name = "lblInvalidActive";
             this.lblInvalidActive.Size = new System.Drawing.Size(75, 20);
             this.lblInvalidActive.TabIndex = 30;
@@ -339,9 +321,6 @@ namespace CoachConnect
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.lblInvalidRoom);
-            this.groupBox2.Controls.Add(this.lblRoom);
-            this.groupBox2.Controls.Add(this.cbxRoom);
             this.groupBox2.Controls.Add(this.lblInvalidActive);
             this.groupBox2.Controls.Add(this.lblInvalidCoach);
             this.groupBox2.Controls.Add(this.lblInvalidEndTime);
@@ -359,42 +338,10 @@ namespace CoachConnect
             this.groupBox2.Controls.Add(this.cbxStartTime);
             this.groupBox2.Location = new System.Drawing.Point(16, 44);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(321, 200);
+            this.groupBox2.Size = new System.Drawing.Size(321, 173);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Session Details";
-            // 
-            // lblInvalidRoom
-            // 
-            this.lblInvalidRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInvalidRoom.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidRoom.Location = new System.Drawing.Point(206, 135);
-            this.lblInvalidRoom.Name = "lblInvalidRoom";
-            this.lblInvalidRoom.Size = new System.Drawing.Size(75, 20);
-            this.lblInvalidRoom.TabIndex = 33;
-            this.lblInvalidRoom.Text = "Invalid Room";
-            this.lblInvalidRoom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblInvalidRoom.Visible = false;
-            // 
-            // lblRoom
-            // 
-            this.lblRoom.AutoSize = true;
-            this.lblRoom.Location = new System.Drawing.Point(18, 139);
-            this.lblRoom.Name = "lblRoom";
-            this.lblRoom.Size = new System.Drawing.Size(35, 13);
-            this.lblRoom.TabIndex = 32;
-            this.lblRoom.Text = "Room";
-            // 
-            // cbxRoom
-            // 
-            this.cbxRoom.FormattingEnabled = true;
-            this.cbxRoom.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.cbxRoom.Location = new System.Drawing.Point(79, 136);
-            this.cbxRoom.Name = "cbxRoom";
-            this.cbxRoom.Size = new System.Drawing.Size(121, 21);
-            this.cbxRoom.TabIndex = 31;
             // 
             // lblInvalidCoach
             // 
@@ -412,7 +359,7 @@ namespace CoachConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 285);
+            this.ClientSize = new System.Drawing.Size(352, 264);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);

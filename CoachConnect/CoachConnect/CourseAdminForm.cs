@@ -197,8 +197,9 @@ namespace CoachConnect
                         {
                             courseResult.CourseID = this.txtCourseID.Text;
                             courseResult.CourseName = this.txtCourseName.Text;
-                            courseResult.Department = (Department)this.cbxDepartment.SelectedItem;
-                            courseResult.IsActive = this.chkActive.Checked;
+
+                            Department selectedDepartment = (Department)this.cbxDepartment.SelectedItem;
+                            courseResult.DepartmentID = selectedDepartment.DepartmentID;
                         }
 
                         context.SaveChanges();

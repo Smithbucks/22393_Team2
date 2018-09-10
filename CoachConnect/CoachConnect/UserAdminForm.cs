@@ -143,6 +143,8 @@ namespace CoachConnect
         private void BtnAddClick(object sender, EventArgs e)
         {
             this.ClearAllFields();
+            this.txtID.Enabled = true;
+            this.btnAdd.Enabled = false;
         }
 
         /// <summary>
@@ -203,6 +205,8 @@ namespace CoachConnect
                         // If save is successful, update the user list and display the new user profile
                         this.DisplayUsers();
                         this.cbxChooseUser.SelectedValue = newUser.UserID;
+                        this.txtID.Enabled = false;
+                        this.btnAdd.Enabled = true;
                     }
                 }
             }
@@ -221,22 +225,6 @@ namespace CoachConnect
                 MessageBox.Show(ex.Message);
                 return;
             }
-
-            this.DisplayUsers();
-            this.ClearAllFields();
-            MessageBox.Show(@"User Profile Updated");
-        }
-
-        /// <summary>
-        /// A method to disable a selected user
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void BtnMinusClick(object sender, EventArgs e)
-        {
-            this.chkAdmin.Checked = false;
-            this.chkActive.Checked = false;
-            this.chkSupervisor.Checked = false;
         }
 
         /// <summary>
@@ -250,6 +238,61 @@ namespace CoachConnect
 
             ResetUserPasswordAdmin resetPasswordForm = new ResetUserPasswordAdmin(username);
             resetPasswordForm.ShowDialog();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Query updates the user in the database
+                using (var context = new db_sft_2172Entities())
+                {
+                    string userId = this.txtID.Text;
+                    var userQuery = from user in context.Users
+                                     where user.UserID.Equals(userId)
+                                     select user;
+
+                    if (userQuery.Any())
+                    {
+                        var userResult = userQuery.FirstOrDefault();
+
+                        if (userResult.FirstName != this.txtFirstName.Text ||
+                            userResult.MiddleName != this.txtMiddleName.Text ||
+                            userResult.LastName != this.txtLastName.Text ||
+                            userResult.DisplayName != this.txtDisplayName.Text ||
+                            userResult.Phone != this.txtPhone.Text ||
+                            userResult.Email != this.txtEmail.Text ||
+                            userResult.IsActive != this.chkActive.Checked ||
+                            userResult.IsSupervisor != this.chkSupervisor.Checked ||
+                            userResult.IsAdmin != this.chkAdmin.Checked)
+                        {
+
+                            DialogResult cancelChoice = MessageBox.Show(
+                                "Closing this window will remove all changes.  Do you want to continue?",
+                                "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                            if (cancelChoice == DialogResult.No)
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+
+                this.Close();
+            }
+            catch (DbUpdateException dbUEx)
+            {
+                MessageBox.Show(dbUEx.InnerException != null ? dbUEx.InnerException.Message : dbUEx.Message);
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

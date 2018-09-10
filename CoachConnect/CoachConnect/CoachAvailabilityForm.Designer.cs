@@ -168,7 +168,7 @@ namespace CoachConnect
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblEditSessionHeader);
             this.Name = "CoachAvailabilityForm";
-            this.Text = "CoachAvailabilityForm";
+            this.Text = "Edit Coach Availability";
             this.Load += new System.EventHandler(this.CoachAvailabilityFormLoad);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailability)).EndInit();

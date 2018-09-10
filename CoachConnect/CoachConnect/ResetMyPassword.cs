@@ -23,30 +23,6 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResetMyPassword" /> class with inputs.
-        /// </summary>
-        /// <param name="original">The original form</param>
-        public ResetMyPassword(Form original)
-        {
-            this.InitializeComponent();
-            this.OriginalForm = original;
-        }
-
-        /// <summary>
-        /// Gets a form object that stores the previous room
-        /// </summary>
-        private Form OriginalForm { get; }
-
-        /// <summary>
-        /// Override method event handler to perform when the form is closed.
-        /// </summary>
-        /// <param name="e">The parameter is not used.</param>
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            this.OriginalForm.Show();
-        }
-
-        /// <summary>
         /// Event handler to click to save the new password into the database
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
@@ -82,7 +58,6 @@ namespace CoachConnect
                                 this.txtStdNewConfirmPassword.Text = string.Empty;
                                 MessageBox.Show(@"Your passsword has been saved!");
 
-                                this.OriginalForm.Show();
                                 this.Close();
                             }
                             else
@@ -118,7 +93,6 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnCancelResetPasswordClick(object sender, EventArgs e)
         {
-            this.OriginalForm.Show();
             this.Close();
         }
 
