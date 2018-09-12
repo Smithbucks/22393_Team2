@@ -39,23 +39,23 @@ namespace CoachConnect
 
                     var userResult = userQuery.FirstOrDefault();
 
-                    if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, this.txtStdPassword.Text))
+                    if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, this.txtCurrentPassword.Text))
                     {
-                        if (!string.IsNullOrEmpty(this.txtStdNewPassword.Text) ||
-                            !string.IsNullOrEmpty(this.txtStdNewConfirmPassword.Text))
+                        if (!string.IsNullOrEmpty(this.txtNewPassword.Text) ||
+                            !string.IsNullOrEmpty(this.txtConfirmPassword.Text))
                         {
-                            if (this.txtStdNewPassword.Text == this.txtStdNewConfirmPassword.Text)
+                            if (this.txtNewPassword.Text == this.txtConfirmPassword.Text)
                             {
                                 // Generate salt and salted hash
-                                SaltedHash sh = new SaltedHash(this.txtStdNewPassword.Text);
+                                SaltedHash sh = new SaltedHash(this.txtNewPassword.Text);
                                 userResult.Password = sh.Hash;
                                 userResult.PasswordSalt = sh.Salt;
                                 userResult.ResetPassword = null;
                                 context.SaveChanges();
 
-                                this.txtStdPassword.Text = string.Empty;
-                                this.txtStdNewPassword.Text = string.Empty;
-                                this.txtStdNewConfirmPassword.Text = string.Empty;
+                                this.txtCurrentPassword.Text = string.Empty;
+                                this.txtNewPassword.Text = string.Empty;
+                                this.txtConfirmPassword.Text = string.Empty;
                                 MessageBox.Show(@"Your passsword has been saved!");
 
                                 this.Close();
@@ -101,6 +101,7 @@ namespace CoachConnect
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
+        /*
         private void TxtStdPasswordLeave(object sender, EventArgs e)
         {
             try
@@ -133,15 +134,16 @@ namespace CoachConnect
                 MessageBox.Show(ex.Message);
             }
         }
+        */
 
         /// <summary>
         /// Event handler to validate the new password and confirm whether the two entries are identical.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void TxtStdNewConfirmPasswordLeave(object sender, EventArgs e)
+        private void TxtNewConfirmPasswordLeave(object sender, EventArgs e)
         {
-            if (this.txtStdNewPassword.Text == this.txtStdNewConfirmPassword.Text && (this.txtStdNewPassword.Text != string.Empty || this.txtStdNewConfirmPassword.Text != string.Empty))
+            if (this.txtNewPassword.Text == this.txtConfirmPassword.Text && (this.txtNewPassword.Text != string.Empty || this.txtConfirmPassword.Text != string.Empty))
             {
                 this.newPWD.Visible = true;
                 this.newPWDConfirmCorrect.Visible = true;
@@ -164,17 +166,15 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnSaveNewPasswordMouseHover(object sender, EventArgs e)
         {
-            if (this.txtStdPassword.Text != string.Empty && this.txtStdNewPassword.Text == this.txtStdNewConfirmPassword.Text && (this.txtStdNewPassword.Text != string.Empty || this.txtStdNewConfirmPassword.Text != string.Empty))
+            if (this.txtCurrentPassword.Text != string.Empty && this.txtNewPassword.Text == this.txtConfirmPassword.Text && (this.txtNewPassword.Text != string.Empty || this.txtConfirmPassword.Text != string.Empty))
             {
                 this.newPWD.Visible = true;
                 this.newPWDConfirmCorrect.Visible = true;
                 this.newPWDNotMatch.Visible = false;
                 this.newPWDConfirmWrong.Visible = false;
-                this.currentPWDWrong.Visible = false;
             }
             else
             {
-                this.currentPWDWrong.Visible = true;
                 this.newPWDNotMatch.Visible = true;
                 this.newPWDConfirmWrong.Visible = true;
                 this.newPWD.Visible = false;

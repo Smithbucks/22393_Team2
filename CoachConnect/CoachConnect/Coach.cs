@@ -19,7 +19,6 @@ namespace CoachConnect
         {
             this.CoachAvailabilities = new HashSet<CoachAvailability>();
             this.CoachSessions = new HashSet<CoachSession>();
-            this.Courses = new HashSet<Course>();
             this.CoachCourses = new HashSet<CoachCourse>();
         }
     
@@ -38,8 +37,6 @@ namespace CoachConnect
         public virtual ICollection<CoachAvailability> CoachAvailabilities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CoachSession> CoachSessions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course> Courses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CoachCourse> CoachCourses { get; set; }
     }

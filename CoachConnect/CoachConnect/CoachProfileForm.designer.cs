@@ -111,7 +111,7 @@ namespace CoachConnect
         /// <summary>
         /// A button to perform the Add Coach action
         /// </summary>
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnAddCoach;
 
         /// <summary>
         /// A button to perform the Close window action
@@ -178,11 +178,17 @@ namespace CoachConnect
             this.txtID = new System.Windows.Forms.TextBox();
             this.cbxChooseCoach = new System.Windows.Forms.ComboBox();
             this.lblChooseCoach = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnAddCoach = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lstUnselectedCourses = new System.Windows.Forms.ListBox();
+            this.lstSelectedCourses = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbxDepartment = new System.Windows.Forms.ComboBox();
+            this.lblDepartment = new System.Windows.Forms.Label();
+            this.btnRemoveCourse = new System.Windows.Forms.Button();
+            this.btnSelectCourse = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -191,7 +197,7 @@ namespace CoachConnect
             // 
             this.lblAdminForm.AutoSize = true;
             this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminForm.Location = new System.Drawing.Point(57, 18);
+            this.lblAdminForm.Location = new System.Drawing.Point(320, 18);
             this.lblAdminForm.Name = "lblAdminForm";
             this.lblAdminForm.Size = new System.Drawing.Size(231, 31);
             this.lblAdminForm.TabIndex = 7;
@@ -294,11 +300,11 @@ namespace CoachConnect
             // btnApply
             // 
             this.btnApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApply.Location = new System.Drawing.Point(145, 477);
+            this.btnApply.Location = new System.Drawing.Point(378, 477);
             this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(86, 22);
+            this.btnApply.Size = new System.Drawing.Size(125, 22);
             this.btnApply.TabIndex = 11;
-            this.btnApply.Text = "Apply Changes";
+            this.btnApply.Text = "Save";
             this.btnApply.UseVisualStyleBackColor = true;
             this.btnApply.Click += new System.EventHandler(this.BtnSubmitClick);
             // 
@@ -396,7 +402,7 @@ namespace CoachConnect
             // 
             this.cbxChooseCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cbxChooseCoach.FormattingEnabled = true;
-            this.cbxChooseCoach.Location = new System.Drawing.Point(141, 70);
+            this.cbxChooseCoach.Location = new System.Drawing.Point(397, 70);
             this.cbxChooseCoach.Name = "cbxChooseCoach";
             this.cbxChooseCoach.Size = new System.Drawing.Size(192, 21);
             this.cbxChooseCoach.TabIndex = 0;
@@ -406,71 +412,134 @@ namespace CoachConnect
             // 
             this.lblChooseCoach.AutoSize = true;
             this.lblChooseCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChooseCoach.Location = new System.Drawing.Point(15, 73);
+            this.lblChooseCoach.Location = new System.Drawing.Point(275, 73);
             this.lblChooseCoach.Name = "lblChooseCoach";
             this.lblChooseCoach.Size = new System.Drawing.Size(104, 13);
             this.lblChooseCoach.TabIndex = 54;
             this.lblChooseCoach.Text = "Choose a Coach:";
             // 
-            // btnAdd
+            // btnAddCoach
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(17, 477);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(106, 22);
-            this.btnAdd.TabIndex = 10;
-            this.btnAdd.Text = "Add New Coach";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.BtnAddClick);
+            this.btnAddCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddCoach.Location = new System.Drawing.Point(17, 477);
+            this.btnAddCoach.Name = "btnAddCoach";
+            this.btnAddCoach.Size = new System.Drawing.Size(125, 22);
+            this.btnAddCoach.TabIndex = 10;
+            this.btnAddCoach.Text = "Add New Coach";
+            this.btnAddCoach.UseVisualStyleBackColor = true;
+            this.btnAddCoach.Click += new System.EventHandler(this.BtnAddCoachClick);
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(252, 477);
+            this.btnClose.Location = new System.Drawing.Point(729, 477);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(81, 22);
+            this.btnClose.Size = new System.Drawing.Size(125, 22);
             this.btnClose.TabIndex = 12;
             this.btnClose.Text = "Cancel";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // listBox1
+            // lstUnselectedCourses
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(35, 85);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 84);
-            this.listBox1.TabIndex = 55;
+            this.lstUnselectedCourses.FormattingEnabled = true;
+            this.lstUnselectedCourses.Location = new System.Drawing.Point(26, 98);
+            this.lstUnselectedCourses.Name = "lstUnselectedCourses";
+            this.lstUnselectedCourses.Size = new System.Drawing.Size(200, 225);
+            this.lstUnselectedCourses.TabIndex = 55;
             // 
-            // listBox2
+            // lstSelectedCourses
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(35, 235);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 84);
-            this.listBox2.TabIndex = 56;
+            this.lstSelectedCourses.FormattingEnabled = true;
+            this.lstSelectedCourses.Location = new System.Drawing.Point(279, 98);
+            this.lstSelectedCourses.Name = "lstSelectedCourses";
+            this.lstSelectedCourses.Size = new System.Drawing.Size(200, 225);
+            this.lstSelectedCourses.TabIndex = 56;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.listBox2);
-            this.groupBox2.Location = new System.Drawing.Point(386, 115);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.cbxDepartment);
+            this.groupBox2.Controls.Add(this.lblDepartment);
+            this.groupBox2.Controls.Add(this.btnRemoveCourse);
+            this.groupBox2.Controls.Add(this.btnSelectCourse);
+            this.groupBox2.Controls.Add(this.lstUnselectedCourses);
+            this.groupBox2.Controls.Add(this.lstSelectedCourses);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.groupBox2.Location = new System.Drawing.Point(352, 115);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(244, 345);
+            this.groupBox2.Size = new System.Drawing.Size(502, 345);
             this.groupBox2.TabIndex = 57;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Available Courses";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(348, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.TabIndex = 60;
+            this.label2.Text = "Selected";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(92, 77);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 59;
+            this.label1.Text = "Available";
+            // 
+            // cbxDepartment
+            // 
+            this.cbxDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.cbxDepartment.FormattingEnabled = true;
+            this.cbxDepartment.Location = new System.Drawing.Point(165, 33);
+            this.cbxDepartment.Name = "cbxDepartment";
+            this.cbxDepartment.Size = new System.Drawing.Size(192, 21);
+            this.cbxDepartment.TabIndex = 58;
+            this.cbxDepartment.SelectedIndexChanged += new System.EventHandler(this.CbxDepartment_SelectedIndexChanged);
+            // 
+            // lblDepartment
+            // 
+            this.lblDepartment.AutoSize = true;
+            this.lblDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblDepartment.Location = new System.Drawing.Point(94, 36);
+            this.lblDepartment.Name = "lblDepartment";
+            this.lblDepartment.Size = new System.Drawing.Size(65, 13);
+            this.lblDepartment.TabIndex = 58;
+            this.lblDepartment.Text = "Department:";
+            // 
+            // btnRemoveCourse
+            // 
+            this.btnRemoveCourse.Location = new System.Drawing.Point(232, 203);
+            this.btnRemoveCourse.Name = "btnRemoveCourse";
+            this.btnRemoveCourse.Size = new System.Drawing.Size(41, 23);
+            this.btnRemoveCourse.TabIndex = 58;
+            this.btnRemoveCourse.Text = "<<";
+            this.btnRemoveCourse.UseVisualStyleBackColor = true;
+            // 
+            // btnSelectCourse
+            // 
+            this.btnSelectCourse.Location = new System.Drawing.Point(232, 168);
+            this.btnSelectCourse.Name = "btnSelectCourse";
+            this.btnSelectCourse.Size = new System.Drawing.Size(41, 23);
+            this.btnSelectCourse.TabIndex = 57;
+            this.btnSelectCourse.Text = ">>";
+            this.btnSelectCourse.UseVisualStyleBackColor = true;
             // 
             // CoachProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 514);
+            this.ClientSize = new System.Drawing.Size(872, 514);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnAddCoach);
             this.Controls.Add(this.cbxChooseCoach);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblChooseCoach);
@@ -484,14 +553,21 @@ namespace CoachConnect
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
         #endregion
 
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox lstUnselectedCourses;
+        private System.Windows.Forms.ListBox lstSelectedCourses;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnRemoveCourse;
+        private System.Windows.Forms.Button btnSelectCourse;
+        private System.Windows.Forms.ComboBox cbxDepartment;
+        private System.Windows.Forms.Label lblDepartment;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

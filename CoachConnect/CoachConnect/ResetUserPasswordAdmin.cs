@@ -38,7 +38,7 @@ namespace CoachConnect
             // Verify that the two entered passwords match
             if (!this.txtTempCode.Text.Equals(this.txtConfirmTempCode.Text))
             {
-                MessageBox.Show(@"Sorry, the codes do not match.  Please try again!");
+                MessageBox.Show(@"Sorry, the temporary passwords do not match.  Please try again!");
 
                 // Clear the password boxes
                 this.txtTempCode.Text = string.Empty;
@@ -48,7 +48,7 @@ namespace CoachConnect
             }
             else if (this.txtTempCode.Text.Equals(string.Empty))
             {
-                MessageBox.Show(@"Please enter a code (max 10 characters).");
+                MessageBox.Show(@"Please enter a temporary password.");
 
                 // Clear the password boxes
                 this.txtTempCode.Text = string.Empty;
@@ -58,7 +58,7 @@ namespace CoachConnect
             }
             else
             {
-                // Find current user, then update temporary code in database
+                // Find current user, then update password in database
                 try
                 {
                     using (var context = new db_sft_2172Entities())
@@ -72,11 +72,15 @@ namespace CoachConnect
 
                         if (currentUser != null)
                         {
-                        currentUser.ResetPassword = this.txtTempCode.Text;
-                        context.SaveChanges();
+                            // Generate salt and salted hash
+                            SaltedHash sh = new SaltedHash(this.txtTempCode.Text);
+                            currentUser.Password = sh.Hash;
+                            currentUser.PasswordSalt = sh.Salt;
+                            currentUser.ResetPassword = "true";
+                            context.SaveChanges();
 
                         // Show confirmation if save is successful
-                        MessageBox.Show(@"Temporary code updated successfully!");
+                        MessageBox.Show(@"Temporary password updated successfully!");
                         }   
                     }
                 }

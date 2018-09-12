@@ -32,6 +32,9 @@ namespace CoachConnect
         {
             this.DisplaySupervisors();
             this.DisplayCoaches();
+            this.DisplayDepartments();
+            this.DisplayUnselectedCourses();
+            this.DisplaySelectedCourses();
         }
 
         /// <summary>
@@ -101,6 +104,119 @@ namespace CoachConnect
         }
 
         /// <summary>
+        /// Method to display the list of users
+        /// </summary>
+        private void DisplayDepartments()
+        {
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Query user table in database and returns the list of the users in ascending order according to last name
+                    var departmentQuery = from departments in context.Departments
+                        orderby departments.DepartmentName
+                        select departments;
+
+                    // Convert query results to list
+                    List<Department> departmentList = departmentQuery.ToList();
+
+                    // Set combo box data source and update data member settings
+                    this.cbxDepartment.DataSource = departmentList;
+                    this.cbxDepartment.ValueMember = "DepartmentID";
+                    this.cbxDepartment.DisplayMember = "DepartmentName";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method to display the list of unselected courses for the current coach
+        /// </summary>
+        private void DisplayUnselectedCourses()
+        {
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    
+                    string departmentId = this.cbxDepartment.SelectedValue.ToString();
+
+                    var departmentCoursesQuery = from courses in context.ViewDepartmentCourses
+                                                 where courses.DepartmentID == departmentId
+                                                 orderby courses.CourseName
+                                                 select courses;
+
+                    var selectedCoursesQuery = from courses in context.ViewCoachCourses
+                                               where courses.CoachID == this.txtID.Text
+                                               orderby courses.CourseName
+                                               select courses.CourseID;
+
+                    var unselectedCoursesQuery = from deptCourses in departmentCoursesQuery
+                                                 where !(selectedCoursesQuery).Contains(deptCourses.CourseID)
+                                                 select deptCourses;
+
+
+                // Convert query results to list
+                List < ViewDepartmentCours > unselectedCourseList = unselectedCoursesQuery.ToList();
+
+                    // Set list box data source and update data member settings
+                    this.lstUnselectedCourses.DataSource = unselectedCourseList;
+                    this.lstUnselectedCourses.ValueMember = "CourseID";
+                    this.lstUnselectedCourses.DisplayMember = "CourseName";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Method to display the list of selected courses for the current coach
+        /// </summary>
+        private void DisplaySelectedCourses()
+        {
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Query user table in database and returns the list of the users in ascending order according to last name
+                    var selectedCoursesQuery = from courses in context.ViewCoachCourses
+                        where courses.CoachID == this.txtID.Text
+                        orderby courses.CourseName
+                        select courses;
+
+                    // Convert query results to list
+                    List<ViewCoachCours> selectedCourseList = selectedCoursesQuery.ToList();
+
+                    // Set list box data source and update data member settings
+                    this.lstSelectedCourses.DataSource = selectedCourseList;
+                    this.lstSelectedCourses.ValueMember = "CourseID";
+                    this.lstSelectedCourses.DisplayMember = "CourseName";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Clear all data fields
         /// </summary>
         private void ClearAllFields()
@@ -157,6 +273,8 @@ namespace CoachConnect
                             this.txtPhone.Text = coachResult.Phone;
                             this.cbxSupervisor.SelectedValue = coachResult.SupervisorID;
                             this.chkActive.Checked = coachResult.IsActive;
+
+                            DisplaySelectedCourses();
                         }
                     }
                 }
@@ -171,14 +289,25 @@ namespace CoachConnect
             }
         }
 
+        private void CbxDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cbxDepartment.SelectedIndex == -1)
+            {
+                return;
+            }
+
+            DisplayUnselectedCourses();
+        }
+
         /// <summary>
         /// Add button clears all text boxes and check boxes so user can enter new information.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void BtnAddClick(object sender, EventArgs e)
+        private void BtnAddCoachClick(object sender, EventArgs e)
         {
             this.ClearAllFields();
+            this.txtID.Enabled = true;
         }
 
         /// <summary>
@@ -238,6 +367,7 @@ namespace CoachConnect
                         // If save is successful, update the coach list and display the new coach profile
                         this.DisplayCoaches();
                         this.cbxChooseCoach.SelectedValue = newCoach.CoachID;
+                        this.txtID.Enabled = false;
                     }
                 }
             }

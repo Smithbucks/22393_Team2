@@ -347,8 +347,8 @@ namespace CoachConnect
                     else
                     {
                         MessageBox.Show(
-                            @"Sorry, a matching session was not found in the database."
-                            + Environment.NewLine + @"Please try again or contact an administrator for assistance.");
+                            @"Sorry, the desired session was not found in the database."
+                            + Environment.NewLine + @"Please try again later or contact an administrator for assistance.");
                     }
                 }
             }

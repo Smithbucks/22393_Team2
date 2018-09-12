@@ -306,7 +306,7 @@ namespace CoachConnect
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(19, 456);
+            this.btnSave.Location = new System.Drawing.Point(19, 467);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(126, 22);
             this.btnSave.TabIndex = 12;
@@ -459,7 +459,7 @@ namespace CoachConnect
             // btnCancel
             // 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(209, 456);
+            this.btnCancel.Location = new System.Drawing.Point(209, 466);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(126, 22);
             this.btnCancel.TabIndex = 58;

@@ -245,6 +245,9 @@
     <Compile Include="ViewCoachCours.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewDepartmentCours.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CoachScheduleForm.resx">
       <DependentUpon>CoachScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -299,7 +302,6 @@
     <None Include="CoachConnectModel.edmx.diagram">
       <DependentUpon>CoachConnectModel.edmx</DependentUpon>
     </None>
-    <None Include="CoachConnect_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

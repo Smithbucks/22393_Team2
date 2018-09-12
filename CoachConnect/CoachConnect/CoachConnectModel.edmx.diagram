@@ -31,7 +31,6 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Session_Day1" />
         <AssociationConnector Association="db_sft_2172Model.FK_Session_Room1" />
         <AssociationConnector Association="db_sft_2172Model.FK_Session_User1" />
-        <AssociationConnector Association="db_sft_2172Model.CoachCourseList" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachCourse" Width="1.5" PointX="0.875" PointY="11.5" />
         <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_Course1" />
         <EntityTypeShape EntityType="db_sft_2172Model.GetCoachAvailability" Width="1.5" PointX="15.75" PointY="6.625" />
@@ -39,6 +38,7 @@
         <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_Coach1" />
         <EntityTypeShape EntityType="db_sft_2172Model.GetSchedulePivot" Width="1.5" PointX="11.375" PointY="6.375" />
         <EntityTypeShape EntityType="db_sft_2172Model.CourseListing" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="db_sft_2172Model.ViewDepartmentCours" Width="1.5" PointX="5.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

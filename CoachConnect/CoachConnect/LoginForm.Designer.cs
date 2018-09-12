@@ -83,7 +83,7 @@ namespace CoachConnect
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(17, 58);
+            this.lblUsername.Location = new System.Drawing.Point(59, 76);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(55, 13);
             this.lblUsername.TabIndex = 0;
@@ -91,23 +91,23 @@ namespace CoachConnect
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(78, 55);
+            this.txtUsername.Location = new System.Drawing.Point(120, 73);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 20);
+            this.txtUsername.Size = new System.Drawing.Size(145, 20);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(78, 81);
+            this.txtPassword.Location = new System.Drawing.Point(120, 102);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(100, 20);
+            this.txtPassword.Size = new System.Drawing.Size(145, 20);
             this.txtPassword.TabIndex = 3;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(17, 84);
+            this.lblPassword.Location = new System.Drawing.Point(61, 105);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 2;
@@ -115,9 +115,9 @@ namespace CoachConnect
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(20, 120);
+            this.btnLogin.Location = new System.Drawing.Point(21, 142);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.Size = new System.Drawing.Size(85, 23);
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -125,9 +125,9 @@ namespace CoachConnect
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(103, 120);
+            this.btnExit.Location = new System.Drawing.Point(228, 142);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.Size = new System.Drawing.Size(85, 23);
             this.btnExit.TabIndex = 5;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -136,10 +136,10 @@ namespace CoachConnect
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
-            this.labelHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHeader.Location = new System.Drawing.Point(16, 16);
+            this.labelHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.labelHeader.Location = new System.Drawing.Point(15, 19);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(176, 20);
+            this.labelHeader.Size = new System.Drawing.Size(298, 31);
             this.labelHeader.TabIndex = 6;
             this.labelHeader.Text = "Login to CoachConnect";
             // 
@@ -148,7 +148,7 @@ namespace CoachConnect
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(207, 161);
+            this.ClientSize = new System.Drawing.Size(327, 181);
             this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
