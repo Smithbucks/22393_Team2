@@ -71,3 +71,16 @@ C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\Resources\currentCoachScheduleTEMPLATE.xlsx
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe.config
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojAssemblyReference.cache
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csproj.CoreCompileInputs.cache
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csproj.CopyComplete
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb

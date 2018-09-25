@@ -522,6 +522,7 @@ namespace CoachConnect
             this.btnRemoveCourse.TabIndex = 58;
             this.btnRemoveCourse.Text = "<<";
             this.btnRemoveCourse.UseVisualStyleBackColor = true;
+            this.btnRemoveCourse.Click += new System.EventHandler(this.btnRemoveCourse_Click);
             // 
             // btnSelectCourse
             // 
@@ -531,6 +532,7 @@ namespace CoachConnect
             this.btnSelectCourse.TabIndex = 57;
             this.btnSelectCourse.Text = ">>";
             this.btnSelectCourse.UseVisualStyleBackColor = true;
+            this.btnSelectCourse.Click += new System.EventHandler(this.btnSelectCourse_Click);
             // 
             // CoachProfileForm
             // 
