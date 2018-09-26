@@ -129,6 +129,51 @@ namespace CoachConnect
         private System.Windows.Forms.TextBox txtID;
 
         /// <summary>
+        /// A list box to display available courses for the current department
+        /// </summary>
+        private System.Windows.Forms.ListBox lstUnselectedCourses;
+
+        /// <summary>
+        /// A list box to display the currently selected courses for the Coach
+        /// </summary>
+        private System.Windows.Forms.ListBox lstSelectedCourses;
+
+        /// <summary>
+        /// A group box to store objects for updating a coach's courses
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox2;
+
+        /// <summary>
+        /// Button to remove the highlighted course from the Selected Courses list.
+        /// </summary>
+        private System.Windows.Forms.Button btnRemoveCourse;
+
+        /// <summary>
+        /// Button to add the highlighted course to the Selected Courses list.
+        /// </summary>
+        private System.Windows.Forms.Button btnSelectCourse;
+
+        /// <summary>
+        /// A combo box allowing users to select a department and display available courses
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxDepartment;
+
+        /// <summary>
+        /// A label for the Department combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblDepartment;
+
+        /// <summary>
+        /// A label for the Selected Courses list box
+        /// </summary>
+        private System.Windows.Forms.Label lblSelectedCourses;
+
+        /// <summary>
+        /// A label for the Unselected (Available) Courses list box
+        /// </summary>
+        private System.Windows.Forms.Label lblAvailableCourses;
+
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
@@ -183,8 +228,8 @@ namespace CoachConnect
             this.lstUnselectedCourses = new System.Windows.Forms.ListBox();
             this.lstSelectedCourses = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblSelectedCourses = new System.Windows.Forms.Label();
+            this.lblAvailableCourses = new System.Windows.Forms.Label();
             this.cbxDepartment = new System.Windows.Forms.ComboBox();
             this.lblDepartment = new System.Windows.Forms.Label();
             this.btnRemoveCourse = new System.Windows.Forms.Button();
@@ -458,8 +503,8 @@ namespace CoachConnect
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.lblSelectedCourses);
+            this.groupBox2.Controls.Add(this.lblAvailableCourses);
             this.groupBox2.Controls.Add(this.cbxDepartment);
             this.groupBox2.Controls.Add(this.lblDepartment);
             this.groupBox2.Controls.Add(this.btnRemoveCourse);
@@ -474,25 +519,25 @@ namespace CoachConnect
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Available Courses";
             // 
-            // label2
+            // lblSelectedCourses
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(348, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 60;
-            this.label2.Text = "Selected";
+            this.lblSelectedCourses.AutoSize = true;
+            this.lblSelectedCourses.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblSelectedCourses.Location = new System.Drawing.Point(348, 77);
+            this.lblSelectedCourses.Name = "lblSelectedCourses";
+            this.lblSelectedCourses.Size = new System.Drawing.Size(57, 13);
+            this.lblSelectedCourses.TabIndex = 60;
+            this.lblSelectedCourses.Text = "Selected";
             // 
-            // label1
+            // lblAvailableCourses
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(92, 77);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 59;
-            this.label1.Text = "Available";
+            this.lblAvailableCourses.AutoSize = true;
+            this.lblAvailableCourses.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lblAvailableCourses.Location = new System.Drawing.Point(92, 77);
+            this.lblAvailableCourses.Name = "lblAvailableCourses";
+            this.lblAvailableCourses.Size = new System.Drawing.Size(59, 13);
+            this.lblAvailableCourses.TabIndex = 59;
+            this.lblAvailableCourses.Text = "Available";
             // 
             // cbxDepartment
             // 
@@ -561,15 +606,5 @@ namespace CoachConnect
 
         }
         #endregion
-
-        private System.Windows.Forms.ListBox lstUnselectedCourses;
-        private System.Windows.Forms.ListBox lstSelectedCourses;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnRemoveCourse;
-        private System.Windows.Forms.Button btnSelectCourse;
-        private System.Windows.Forms.ComboBox cbxDepartment;
-        private System.Windows.Forms.Label lblDepartment;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
     }
 }

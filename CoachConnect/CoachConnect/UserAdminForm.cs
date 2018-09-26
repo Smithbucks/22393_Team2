@@ -240,7 +240,13 @@ namespace CoachConnect
             resetPasswordForm.ShowDialog();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        /// <summary>
+        /// A button to allow users to cancel changes and close the current window.
+        /// If any changes were made, an alert will display and allow the user to back out.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             try
             {
@@ -266,10 +272,11 @@ namespace CoachConnect
                             userResult.IsSupervisor != this.chkSupervisor.Checked ||
                             userResult.IsAdmin != this.chkAdmin.Checked)
                         {
-
                             DialogResult cancelChoice = MessageBox.Show(
                                 "Closing this window will remove all changes.  Do you want to continue?",
-                                "Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                                "Cancel",
+                                MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Warning);
 
                             if (cancelChoice == DialogResult.No)
                             {

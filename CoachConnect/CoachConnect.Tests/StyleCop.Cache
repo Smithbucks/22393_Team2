@@ -48,17 +48,14 @@
       </violation>
     </violations>
   </sourcecode>
-  <project key="2108224272">
-    <configuration>TRACE</configuration>
-  </project>
   <sourcecode name="AssemblyInfo.cs" parser="StyleCop.CSharp.CsParser">
     <timestamps>
       <styleCop>2018/07/30 21:39:26.327</styleCop>
       <settingsFile>2018/07/30 21:39:26.307</settingsFile>
-      <sourceFile>2018/07/31 19:37:50.374</sourceFile>
+      <sourceFile>2018/08/07 20:53:46.371</sourceFile>
       <parser>2018/07/30 21:39:26.327</parser>
       <StyleCop.CSharp.DocumentationRules>2018/07/30 21:39:26.327</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>974428076</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-531395679</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2018/07/30 21:39:26.327</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
       <StyleCop.CSharp.MaintainabilityRules>2018/07/30 21:39:26.327</StyleCop.CSharp.MaintainabilityRules>
@@ -78,10 +75,10 @@
     <timestamps>
       <styleCop>2018/07/30 21:39:26.327</styleCop>
       <settingsFile>2018/07/30 21:39:26.307</settingsFile>
-      <sourceFile>2018/07/30 21:29:31.399</sourceFile>
+      <sourceFile>2018/08/07 20:53:46.375</sourceFile>
       <parser>2018/07/30 21:39:26.327</parser>
       <StyleCop.CSharp.DocumentationRules>2018/07/30 21:39:26.327</StyleCop.CSharp.DocumentationRules>
-      <StyleCop.CSharp.DocumentationRules.FilesHashCode>974428076</StyleCop.CSharp.DocumentationRules.FilesHashCode>
+      <StyleCop.CSharp.DocumentationRules.FilesHashCode>-531395679</StyleCop.CSharp.DocumentationRules.FilesHashCode>
       <StyleCop.CSharp.LayoutRules>2018/07/30 21:39:26.327</StyleCop.CSharp.LayoutRules>
       <StyleCop.CSharp.LayoutRules.FilesHashCode>0</StyleCop.CSharp.LayoutRules.FilesHashCode>
       <StyleCop.CSharp.MaintainabilityRules>2018/07/30 21:39:26.327</StyleCop.CSharp.MaintainabilityRules>
@@ -97,4 +94,7 @@
     </timestamps>
     <violations />
   </sourcecode>
+  <project key="2108224272">
+    <configuration>DEBUG;TRACE</configuration>
+  </project>
 </stylecopresultscache>

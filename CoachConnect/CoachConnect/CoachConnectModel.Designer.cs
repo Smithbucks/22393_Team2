@@ -1,4 +1,8 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\CoachConnectModel.edmx'. 
+﻿// <copyright file="CoachConnectModel.Designer.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
+// </copyright>
+
+// T4 code generation is enabled for model 'C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\CoachConnectModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

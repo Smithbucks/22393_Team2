@@ -135,8 +135,7 @@ namespace CoachConnect
             }
             catch (SqlException sqlEx)
             {
-                MessageBox.Show(sqlEx.Message);
-                //MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {

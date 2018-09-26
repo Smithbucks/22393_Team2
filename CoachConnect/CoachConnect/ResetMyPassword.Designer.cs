@@ -8,7 +8,6 @@ namespace CoachConnect
     /// </summary>
     public partial class ResetMyPassword
     {
-
         /// <summary>
         /// Button to save new password
         /// </summary>
@@ -18,6 +17,61 @@ namespace CoachConnect
         /// Button to cancel the password reset
         /// </summary>
         private System.Windows.Forms.Button btnCancleResetPassword;
+
+        /// <summary>
+        /// A label for the New Password text box
+        /// </summary>
+        private System.Windows.Forms.Label lblNewPwd;
+
+        /// <summary>
+        /// A label for the Confirm Password text box
+        /// </summary>
+        private System.Windows.Forms.Label lblConfirmPwd;
+
+        /// <summary>
+        /// A text box for entering a new password
+        /// </summary>
+        private System.Windows.Forms.TextBox txtNewPassword;
+
+        /// <summary>
+        /// A text box for re-entering the new password
+        /// </summary>
+        private System.Windows.Forms.TextBox txtConfirmPassword;
+
+        /// <summary>
+        /// A label for the Current Password text box
+        /// </summary>
+        private System.Windows.Forms.Label lblCurrentPwd;
+
+        /// <summary>
+        /// A text box for entering the current password
+        /// </summary>
+        private System.Windows.Forms.TextBox txtCurrentPassword;
+
+        /// <summary>
+        /// A picture that appears next to Confirm Password when the New and Confirm passwords match
+        /// </summary>
+        private System.Windows.Forms.PictureBox newPWDConfirmCorrect;
+
+        /// <summary>
+        /// A picture that appears next to New Password when the New and Confirm passwords match
+        /// </summary>
+        private System.Windows.Forms.PictureBox newPWD;
+
+        /// <summary>
+        /// A picture that appears next to Confirm Password when the New and Confirm passwords do not match
+        /// </summary>
+        private System.Windows.Forms.PictureBox newPWDConfirmWrong;
+
+        /// <summary>
+        /// A picture that appears next to New Password when the New and Confirm passwords do not match
+        /// </summary>
+        private System.Windows.Forms.PictureBox newPWDNotMatch;
+
+        /// <summary>
+        /// A header for the Reset My Password window
+        /// </summary>
+        private System.Windows.Forms.Label lblHeader;
 
         /// <summary>
         /// Required designer variable.
@@ -49,17 +103,17 @@ namespace CoachConnect
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetMyPassword));
             this.btnSaveNewPassword = new System.Windows.Forms.Button();
             this.btnCancleResetPassword = new System.Windows.Forms.Button();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
+            this.lblNewPwd = new System.Windows.Forms.Label();
+            this.lblConfirmPwd = new System.Windows.Forms.Label();
             this.txtNewPassword = new System.Windows.Forms.TextBox();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblCurrentPwd = new System.Windows.Forms.Label();
             this.txtCurrentPassword = new System.Windows.Forms.TextBox();
             this.newPWDConfirmCorrect = new System.Windows.Forms.PictureBox();
             this.newPWD = new System.Windows.Forms.PictureBox();
             this.newPWDConfirmWrong = new System.Windows.Forms.PictureBox();
             this.newPWDNotMatch = new System.Windows.Forms.PictureBox();
-            this.labelHeader = new System.Windows.Forms.Label();
+            this.lblHeader = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.newPWDConfirmCorrect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPWD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPWDConfirmWrong)).BeginInit();
@@ -82,15 +136,15 @@ namespace CoachConnect
             this.btnCancleResetPassword.UseVisualStyleBackColor = true;
             this.btnCancleResetPassword.Click += new System.EventHandler(this.BtnCancelResetPasswordClick);
             // 
-            // label35
+            // lblNewPwd
             // 
-            resources.ApplyResources(this.label35, "label35");
-            this.label35.Name = "label35";
+            resources.ApplyResources(this.lblNewPwd, "lblNewPwd");
+            this.lblNewPwd.Name = "lblNewPwd";
             // 
-            // label36
+            // lblConfirmPwd
             // 
-            resources.ApplyResources(this.label36, "label36");
-            this.label36.Name = "label36";
+            resources.ApplyResources(this.lblConfirmPwd, "lblConfirmPwd");
+            this.lblConfirmPwd.Name = "lblConfirmPwd";
             // 
             // txtNewPassword
             // 
@@ -103,10 +157,10 @@ namespace CoachConnect
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.Leave += new System.EventHandler(this.TxtNewConfirmPasswordLeave);
             // 
-            // label1
+            // lblCurrentPwd
             // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
+            resources.ApplyResources(this.lblCurrentPwd, "lblCurrentPwd");
+            this.lblCurrentPwd.Name = "lblCurrentPwd";
             // 
             // txtCurrentPassword
             // 
@@ -141,10 +195,10 @@ namespace CoachConnect
             this.newPWDNotMatch.Name = "newPWDNotMatch";
             this.newPWDNotMatch.TabStop = false;
             // 
-            // labelHeader
+            // lblHeader
             // 
-            resources.ApplyResources(this.labelHeader, "labelHeader");
-            this.labelHeader.Name = "labelHeader";
+            resources.ApplyResources(this.lblHeader, "lblHeader");
+            this.lblHeader.Name = "lblHeader";
             // 
             // ResetMyPassword
             // 
@@ -152,7 +206,7 @@ namespace CoachConnect
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancleResetPassword;
-            this.Controls.Add(this.labelHeader);
+            this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.newPWDNotMatch);
             this.Controls.Add(this.btnSaveNewPassword);
             this.Controls.Add(this.newPWDConfirmWrong);
@@ -160,9 +214,9 @@ namespace CoachConnect
             this.Controls.Add(this.newPWD);
             this.Controls.Add(this.newPWDConfirmCorrect);
             this.Controls.Add(this.txtCurrentPassword);
-            this.Controls.Add(this.label35);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label36);
+            this.Controls.Add(this.lblNewPwd);
+            this.Controls.Add(this.lblCurrentPwd);
+            this.Controls.Add(this.lblConfirmPwd);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.txtNewPassword);
             this.MaximizeBox = false;
@@ -178,17 +232,5 @@ namespace CoachConnect
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox txtNewPassword;
-        private System.Windows.Forms.TextBox txtConfirmPassword;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCurrentPassword;
-        private System.Windows.Forms.PictureBox newPWDConfirmCorrect;
-        private System.Windows.Forms.PictureBox newPWD;
-        private System.Windows.Forms.PictureBox newPWDConfirmWrong;
-        private System.Windows.Forms.PictureBox newPWDNotMatch;
-        private System.Windows.Forms.Label labelHeader;
     }
 }

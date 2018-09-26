@@ -17,20 +17,34 @@ namespace CoachConnect
     public partial class CoachProfileForm : Form
     {
         /// <summary>
+        /// A list to store available courses for the listed department
+        /// and provide a binding data source to the Available Courses list box.
+        /// </summary>
+        private BindingList<ViewDepartmentCours> unselectedCourseList;
+
+        /// <summary>
+        /// A list to store the current coach's courses that are saved in the database.
+        /// </summary>
+        private BindingList<ViewCoachCours> coachSelectedCourseList;
+
+        /// <summary>
+        /// A list to store current selected courses for the coach
+        /// and provide a binding data source to the Available Courses list box.
+        /// </summary>
+        private BindingList<ViewCoachCours> currentSelectedCourseList;
+
+        /// <summary>
+        /// A boolean to determine whether the current coach profile has been modified.
+        /// </summary>
+        private bool isCoachModified = false;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="CoachProfileForm"/> class.
         /// </summary>
         public CoachProfileForm()
         {
             this.InitializeComponent();
         }
-
-        /// <summary>
-        /// Fields to store current courses for the selected coach
-        /// </summary>
-        private BindingList<ViewDepartmentCours> unselectedCourseList;
-        private BindingList<ViewCoachCours> coachSelectedCourseList;
-
-        private BindingList<ViewCoachCours> currentSelectedCourseList;
 
         /// <summary>
         /// Maximizes Form and displays the users with load event of the form.
@@ -44,7 +58,6 @@ namespace CoachConnect
             this.GetCoachSelectedCourses();
             this.DisplaySelectedCourses();
             this.DisplayDepartments();
-            
         }
 
         /// <summary>
@@ -124,8 +137,8 @@ namespace CoachConnect
                 {
                     // Query user table in database and returns the list of the users in ascending order according to last name
                     var departmentQuery = from departments in context.Departments
-                                          orderby departments.DepartmentName
-                                          select departments;
+                        orderby departments.DepartmentName
+                        select departments;
 
                     // Convert query results to list
                     List<Department> departmentList = departmentQuery.ToList();
@@ -156,17 +169,16 @@ namespace CoachConnect
             {
                 using (var context = new db_sft_2172Entities())
                 {
-
                     string coachId = this.cbxChooseCoach.SelectedValue.ToString();
 
                     var selectedCoursesQuery = from courses in context.ViewCoachCourses
-                                                 where courses.CoachID == coachId
-                                                 orderby courses.CourseName
-                                                 select courses;
+                        where courses.CoachID == coachId
+                        orderby courses.CourseName
+                        select courses;
 
                     // Convert query results to lists and store in object fields
                     this.coachSelectedCourseList = new BindingList<ViewCoachCours>(selectedCoursesQuery.ToList());
-                    this.currentSelectedCourseList = new BindingList<ViewCoachCours>(selectedCoursesQuery.ToList()); ;
+                    this.currentSelectedCourseList = new BindingList<ViewCoachCours>(selectedCoursesQuery.ToList());
                 }
             }
             catch (SqlException sqlEx)
@@ -188,22 +200,20 @@ namespace CoachConnect
             {
                 using (var context = new db_sft_2172Entities())
                 {
-                    
                     string departmentId = this.cbxDepartment.SelectedValue.ToString();
 
                     var departmentCoursesQuery = from courses in context.ViewDepartmentCourses
-                                                 where courses.DepartmentID == departmentId
-                                                 orderby courses.CourseName
-                                                 select courses;
-                    
-                    var currentSelectedCoursesQuery = from courses in currentSelectedCourseList
+                        where courses.DepartmentID == departmentId
+                        orderby courses.CourseName
+                        select courses;
+
+                    var currentSelectedCoursesQuery = from courses in this.currentSelectedCourseList
                         orderby courses.CourseName
                         select courses.CourseID;
 
                     var unselectedCoursesQuery = from deptCourses in departmentCoursesQuery
-                        where !(currentSelectedCoursesQuery).Contains(deptCourses.CourseID)
+                        where !currentSelectedCoursesQuery.Contains(deptCourses.CourseID)
                         select deptCourses;
-
 
                     // Convert query results to list
                     this.unselectedCourseList =
@@ -249,8 +259,8 @@ namespace CoachConnect
             this.txtDisplayName.Clear();
             this.txtEmail.Clear();
             this.txtPhone.Clear();
-            this.cbxSupervisor.SelectedValue = -1;
             this.chkActive.Checked = false;
+            this.cbxSupervisor.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -264,24 +274,45 @@ namespace CoachConnect
             {
                 return;
             }
+            else
+            {
+                // Call method to determine whether current coach profile has been modified
+                this.CheckForModifiedProfile();
+
+                // If the current coach profile is modified, display an alert
+                if (this.isCoachModified)
+                {
+                    DialogResult cancelChoice = MessageBox.Show(
+                        @"This action will remove all current changes.  Do you want to continue?",
+                        @"Cancel", 
+                        MessageBoxButtons.YesNo, 
+                        MessageBoxIcon.Warning);
+
+                    if (cancelChoice == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+            }
 
             try
             {
                 using (var context = new db_sft_2172Entities())
                 {
-                    // Query is getting the coach ID from the combo box.
+                    // Obtain the selected coach ID from the combo box
                     string coachId = this.cbxChooseCoach.SelectedValue.ToString();
 
                     // Find the coach in the database.
                     var coachQuery = from coach in context.Coaches
-                                     where coach.CoachID.Equals(coachId)
-                                     select coach;
+                        where coach.CoachID.Equals(coachId)
+                        select coach;
 
                     // If the query returns a a user, display the corresponding info in the form
                     if (coachQuery.Any())
                     {
                         var coachResult = coachQuery.FirstOrDefault();
 
+                        // If a query result is found, update fields and course lists
                         if (coachResult != null)
                         {
                             this.txtID.Text = coachResult.CoachID;
@@ -294,8 +325,11 @@ namespace CoachConnect
                             this.cbxSupervisor.SelectedValue = coachResult.SupervisorID;
                             this.chkActive.Checked = coachResult.IsActive;
 
-                            GetCoachSelectedCourses();
-                            DisplaySelectedCourses();
+                            this.GetCoachSelectedCourses();
+                            this.DisplaySelectedCourses();
+
+                            // Reset modified flag
+                            this.isCoachModified = false;
                         }
                     }
                 }
@@ -310,6 +344,11 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Update available courses when the Department combo box value is changed.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
         private void CbxDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.cbxDepartment.SelectedIndex == -1)
@@ -317,7 +356,7 @@ namespace CoachConnect
                 return;
             }
 
-            DisplayUnselectedCourses();
+            this.DisplayUnselectedCourses();
         }
 
         /// <summary>
@@ -327,8 +366,37 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnAddCoachClick(object sender, EventArgs e)
         {
+            // Call method to determine whether current coach profile has been modified
+            this.CheckForModifiedProfile();
+
+            // If the current coach profile is modified, display an alert
+            if (this.isCoachModified)
+            {
+                DialogResult cancelChoice = MessageBox.Show(
+                    @"This action will remove all current changes.  Do you want to continue?",
+                    @"Cancel", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning);
+
+                if (cancelChoice == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            // Clear all fields and enable text ID for new user input
             this.ClearAllFields();
             this.txtID.Enabled = true;
+
+            // Clear out course lists (new user should have no courses yet)
+            this.coachSelectedCourseList = new BindingList<ViewCoachCours>();
+            this.currentSelectedCourseList = new BindingList<ViewCoachCours>();
+            
+            this.DisplaySelectedCourses();
+            this.DisplayUnselectedCourses();
+
+            // Set modified flag to ensure user has a chance to save data
+            this.isCoachModified = true;
         }
 
         /// <summary>
@@ -343,11 +411,11 @@ namespace CoachConnect
 
             // Loop through selected courses and determine whether selected courses
             // need to be added to the list
-            foreach (ViewCoachCours selectedCourse in currentSelectedCourseList)
+            foreach (ViewCoachCours selectedCourse in this.currentSelectedCourseList)
             {
                 bool isCourseSelected = false;
 
-                foreach (ViewCoachCours coachCourse in coachSelectedCourseList)
+                foreach (ViewCoachCours coachCourse in this.coachSelectedCourseList)
                 {
                     if (coachCourse.CourseID.Equals(selectedCourse.CourseID))
                     {
@@ -364,11 +432,11 @@ namespace CoachConnect
 
             // Loop through the originally selected courses and determine whether
             // any were removed
-            foreach (ViewCoachCours coachCourse in coachSelectedCourseList)
+            foreach (ViewCoachCours coachCourse in this.coachSelectedCourseList)
             {
                 bool isCourseSelected = false;
 
-                foreach (ViewCoachCours selectedCourse in currentSelectedCourseList)
+                foreach (ViewCoachCours selectedCourse in this.currentSelectedCourseList)
                 {
                     if (coachCourse.CourseID.Equals(selectedCourse.CourseID))
                     {
@@ -390,8 +458,8 @@ namespace CoachConnect
                 {
                     string coachId = this.txtID.Text;
                     var coachQuery = from coach in context.Coaches
-                                     where coach.CoachID.Equals(coachId)
-                                     select coach;
+                        where coach.CoachID.Equals(coachId)
+                        select coach;
 
                     if (coachQuery.Any())
                     {
@@ -404,7 +472,9 @@ namespace CoachConnect
                         coachResult.Email = this.txtEmail.Text;
                         coachResult.IsActive = this.chkActive.Checked;
 
-                        coachResult.SupervisorID = this.cbxSupervisor.SelectedIndex == -1 ? string.Empty : this.cbxSupervisor.SelectedValue.ToString();
+                        coachResult.SupervisorID = this.cbxSupervisor.SelectedIndex == -1
+                            ? string.Empty
+                            : this.cbxSupervisor.SelectedValue.ToString();
 
                         foreach (ViewCoachCours course in addList)
                         {
@@ -450,7 +520,9 @@ namespace CoachConnect
                             Email = this.txtEmail.Text,
                             IsActive = this.chkActive.Checked,
                             SupervisorID =
-                                this.cbxSupervisor.SelectedIndex == -1 ? string.Empty : this.cbxSupervisor.SelectedValue.ToString()
+                                this.cbxSupervisor.SelectedIndex == -1
+                                    ? string.Empty
+                                    : this.cbxSupervisor.SelectedValue.ToString()
                         };
 
                         foreach (ViewCoachCours course in addList)
@@ -514,6 +586,89 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnCancel_Click(object sender, EventArgs e)
         {
+            // Call method to determine whether current coach profile has been modified
+            this.CheckForModifiedProfile();
+
+            // If the current coach profile is modified, display an alert
+            if (this.isCoachModified)
+            {
+                DialogResult cancelChoice = MessageBox.Show(
+                    @"Closing this window will remove all changes.  Do you want to continue?",
+                    @"Cancel", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning);
+
+                if (cancelChoice == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            this.Close();
+        }
+
+        /// <summary>
+        /// Remove button deletes the selected course from the Selected Course list box,
+        /// then refreshes the Unselected and Selected list boxes.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnRemoveCourse_Click(object sender, EventArgs e)
+        {
+            if (lstSelectedCourses.SelectedIndex == -1)
+            {
+                MessageBox.Show(@"Please select a course to remove.");
+            }
+            else
+            {
+                this.currentSelectedCourseList.Remove((ViewCoachCours)this.lstSelectedCourses.SelectedItem);
+                this.DisplayUnselectedCourses();
+                this.DisplaySelectedCourses();
+
+                this.isCoachModified = true;
+            }
+        }
+
+        /// <summary>
+        /// Select button adds the selected course to the Selected Course list box,
+        /// then refreshes the Unselected and Selected list boxes.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnSelectCourse_Click(object sender, EventArgs e)
+        {
+            if (lstUnselectedCourses.SelectedIndex == -1)
+            {
+                MessageBox.Show(@"Please select a course to add.");
+            }
+            else
+            {
+                ViewDepartmentCours selectedCourse = (ViewDepartmentCours)lstUnselectedCourses.SelectedItem;
+
+                Coach selectedCoach = (Coach)cbxChooseCoach.SelectedItem;
+
+                ViewCoachCours newCourse = new ViewCoachCours()
+                {
+                    CoachID = selectedCoach.CoachID,
+                    CourseID = selectedCourse.CourseID,
+                    CourseName = selectedCourse.CourseName
+                };
+
+                this.currentSelectedCourseList.Add(newCourse);
+
+                this.DisplayUnselectedCourses();
+                this.DisplaySelectedCourses();
+
+                this.isCoachModified = true;
+            }
+        }
+
+        /// <summary>
+        /// Determine whether the current coach profile has been modified.
+        /// If yes, update a boolean value stored in the Form object.
+        /// </summary>
+        private void CheckForModifiedProfile()
+        {
             try
             {
                 // Query updates the user in the database
@@ -535,17 +690,9 @@ namespace CoachConnect
                             coachResult.Phone != this.txtPhone.Text ||
                             coachResult.Email != this.txtEmail.Text ||
                             coachResult.IsActive != this.chkActive.Checked ||
-                            coachResult.SupervisorID != this.cbxSupervisor.SelectedIndex.ToString())
+                            coachResult.SupervisorID != this.cbxSupervisor.SelectedValue.ToString())
                         {
-
-                            DialogResult cancelChoice = MessageBox.Show(
-                                @"Closing this window will remove all changes.  Do you want to continue?",
-                                @"Cancel", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-                            if (cancelChoice == DialogResult.Yes)
-                            {
-                                this.Close();
-                            }
+                            this.isCoachModified = true;
                         }
                     }
                 }
@@ -562,82 +709,6 @@ namespace CoachConnect
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        /// <summary>
-        /// Remove button deletes the selected course from the Selected Course list box,
-        /// then refreshes the Unselected and Selected list boxes.
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void btnRemoveCourse_Click(object sender, EventArgs e)
-        {
-            if (lstSelectedCourses.SelectedIndex == -1)
-            {
-                MessageBox.Show(@"Please select a course to remove.");
-            }
-            else
-            {
-                currentSelectedCourseList.Remove((ViewCoachCours)lstSelectedCourses.SelectedItem);
-                DisplayUnselectedCourses();
-                DisplaySelectedCourses();
-
-                //lstSelectedCourses.Items.Remove(lstSelectedCourses.SelectedIndex);
-
-                // Set list box data source and update data member settings
-                /*
-                this.lstSelectedCourses.DataSource = null;
-                this.lstSelectedCourses.Items.Clear();
-
-                this.lstSelectedCourses.DataSource = this.currentSelectedCourseList;
-                this.lstSelectedCourses.ValueMember = "CourseID";
-                this.lstSelectedCourses.DisplayMember = "CourseName";
-                */
-
-                //DisplayUnselectedCourses();
-            }
-        }
-
-        /// <summary>
-        /// Select button adds the selected course to the Selected Course list box,
-        /// then refreshes the Unselected and Selected list boxes.
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void btnSelectCourse_Click(object sender, EventArgs e)
-        {
-            if (lstUnselectedCourses.SelectedIndex == -1)
-            {
-                MessageBox.Show(@"Please select a course to add.");
-            }
-            else
-            {
-                ViewDepartmentCours selectedCourse = (ViewDepartmentCours) lstUnselectedCourses.SelectedItem;
-
-                Coach selectedCoach = (Coach) cbxChooseCoach.SelectedItem;
-
-                ViewCoachCours newCourse = new ViewCoachCours()
-                {
-                    CoachID = selectedCoach.CoachID,
-                    CourseID = selectedCourse.CourseID,
-                    CourseName = selectedCourse.CourseName
-                };
-
-                this.currentSelectedCourseList.Add(newCourse);
-
-                DisplayUnselectedCourses();
-                DisplaySelectedCourses();
-            }
-        }
-
-        private void AddNewDBCoachCourses(string coachID, List<ViewCoachCours> addList)
-        {
-            
-        }
-
-        private void RemoveDBCoachCourses(string coachID, List<ViewCoachCours> removeList)
-        {
-
         }
     }
 }
