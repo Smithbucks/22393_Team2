@@ -17,7 +17,6 @@
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="DepartmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Department" Relationship="db_sft_2172Model.FK_Course_Department" FromRole="Course" ToRole="Department" />
-    <NavigationProperty Name="Coaches" Relationship="db_sft_2172Model.CoachCourseList" FromRole="Course" ToRole="Coach" />
     <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_Course1" FromRole="Course" ToRole="CoachCourse" />
   </EntityType>
   <EntityType Name="Room">
@@ -148,10 +147,6 @@
       <End Role="User" EntitySet="Users" />
       <End Role="CoachSession" EntitySet="CoachSessions" />
     </AssociationSet>
-    <AssociationSet Name="CoachCourseList" Association="db_sft_2172Model.CoachCourseList">
-      <End Role="Coach" EntitySet="Coaches" />
-      <End Role="Course" EntitySet="Courses" />
-    </AssociationSet>
     <EntitySet Name="CoachCourses" EntityType="db_sft_2172Model.CoachCourse" />
     <AssociationSet Name="FK_CoachCourse_Course1" Association="db_sft_2172Model.FK_CoachCourse_Course1">
       <End Role="Course" EntitySet="Courses" />
@@ -168,6 +163,7 @@
     </FunctionImport>
     <EntitySet Name="SchedulePivots" EntityType="db_sft_2172Model.SchedulePivot" />
     <EntitySet Name="CourseListings" EntityType="db_sft_2172Model.CourseListing" />
+    <EntitySet Name="ViewDepartmentCourses" EntityType="db_sft_2172Model.ViewDepartmentCours" />
   </EntityContainer>
   <EntityType Name="Department">
     <Key>
@@ -268,7 +264,6 @@
     <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_Coach_User" FromRole="Coach" ToRole="User" />
     <NavigationProperty Name="CoachAvailabilities" Relationship="db_sft_2172Model.FK_CoachAvailability_Coach" FromRole="Coach" ToRole="CoachAvailability" />
     <NavigationProperty Name="CoachSessions" Relationship="db_sft_2172Model.FK_Session_Coach" FromRole="Coach" ToRole="CoachSession" />
-    <NavigationProperty Name="Courses" Relationship="db_sft_2172Model.CoachCourseList" FromRole="Coach" ToRole="Course" />
     <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_Coach1" FromRole="Coach" ToRole="CoachCourse" />
   </EntityType>
   <EntityType Name="CoachAvailability">
@@ -319,7 +314,7 @@
       <PropertyRef Name="CourseID" />
       <PropertyRef Name="CoachID" />
     </Key>
-    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="154" FixedLength="false" Unicode="true" />
     <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
@@ -455,10 +450,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="CoachCourseList">
-    <End Type="db_sft_2172Model.Coach" Role="Coach" Multiplicity="*" />
-    <End Type="db_sft_2172Model.Course" Role="Course" Multiplicity="*" />
-  </Association>
   <EntityType Name="CoachCourse">
     <Key>
       <PropertyRef Name="CourseID" />
@@ -544,5 +535,15 @@
     <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="CourseListID" Type="String" Nullable="false" MaxLength="154" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ViewDepartmentCours">
+    <Key>
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="154" FixedLength="false" Unicode="true" />
+    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DepartmentID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

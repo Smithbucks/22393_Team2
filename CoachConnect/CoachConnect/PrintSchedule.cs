@@ -124,7 +124,7 @@ namespace CoachConnect
                 // Get filepaths for current Resources folder (needed to get Excel template file)
                 DirectoryInfo dirinfo = new DirectoryInfo(Directory.GetCurrentDirectory());
                 string temp = dirinfo.FullName;
-                string excelPath = Path.Combine(temp, "Resources", "currentCoachScheduleTEMPLATE.xlsx");
+                string excelPath = Path.Combine(temp, "Resources", "currentCoachSchedule.xltx");
 
                 // creating Excel Application  
                 _Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -142,10 +142,10 @@ namespace CoachConnect
                 worksheet = workbook.ActiveSheet;
 
                 // storing header part in Excel  
-                for (int i = 1; i < this.dataGridViewSchedule.Columns.Count + 1; i++)
-                {
-                    worksheet.Cells[4, i] = this.dataGridViewSchedule.Columns[i - 1].HeaderText;
-                }
+                //for (int i = 1; i < this.dataGridViewSchedule.Columns.Count + 1; i++)
+                //{
+                //    worksheet.Cells[4, i] = this.dataGridViewSchedule.Columns[i - 1].HeaderText;
+                //}
 
                 // storing Each row and column value to excel sheet  
                 for (int i = 0; i < this.dataGridViewSchedule.Rows.Count; i++)
@@ -154,14 +154,14 @@ namespace CoachConnect
                     {
                         if (this.dataGridViewSchedule.Rows[i].Cells[j].Value == null)
                         {
-                            worksheet.Cells[i + 5, j + 1] = null;
+                            worksheet.Cells[i + 2, j + 1] = null;
                         }
                         else
                         {
-                            worksheet.Cells[i + 5, j + 1] = this.dataGridViewSchedule.Rows[i].Cells[j].Value.ToString();
+                            worksheet.Cells[i + 2, j + 1] = this.dataGridViewSchedule.Rows[i].Cells[j].Value.ToString();
                         }
 
-                        worksheet.Cells[i + 5, j + 1].WrapText = true;
+                        worksheet.Cells[i + 2, j + 1].WrapText = true;
                     }
                 }
 

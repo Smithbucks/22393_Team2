@@ -132,14 +132,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="CoachCourseList" TypeName="db_sft_2172Model.CoachCourseList" StoreEntitySet="CoachCourseList">
-      <EndProperty Name="Course">
-        <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-      </EndProperty>
-      <EndProperty Name="Coach">
-        <ScalarProperty Name="CoachID" ColumnName="CoachID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <EntitySetMapping Name="CoachCourses">
       <EntityTypeMapping TypeName="db_sft_2172Model.CoachCourse">
         <MappingFragment StoreEntitySet="CoachCourse">
@@ -192,6 +184,15 @@
           <ScalarProperty Name="CourseListID" ColumnName="CourseListID" />
           <ScalarProperty Name="CourseName" ColumnName="CourseName" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewDepartmentCourses">
+      <EntityTypeMapping TypeName="db_sft_2172Model.ViewDepartmentCours">
+        <MappingFragment StoreEntitySet="ViewDepartmentCourses">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
