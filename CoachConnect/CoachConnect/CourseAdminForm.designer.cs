@@ -235,6 +235,7 @@ namespace CoachConnect
             // 
             // txtCourseID
             // 
+            this.txtCourseID.Enabled = false;
             this.txtCourseID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCourseID.Location = new System.Drawing.Point(102, 25);
             this.txtCourseID.Name = "txtCourseID";

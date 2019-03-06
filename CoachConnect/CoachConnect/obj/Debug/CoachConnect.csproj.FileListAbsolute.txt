@@ -202,7 +202,6 @@ C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetMyPassword.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserProfileForm.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditCoachAvailability.resources
-C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\Resources\currentCoachScheduleTEMPLATE.xlsx
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.manifest
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\CoachConnect.application
@@ -233,3 +232,4 @@ C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debu
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojAssemblyReference.cache
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\Resources\currentCoachSchedule.xltx

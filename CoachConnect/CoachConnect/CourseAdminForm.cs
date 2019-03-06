@@ -170,6 +170,7 @@ namespace CoachConnect
         private void BtnAddClick(object sender, EventArgs e)
         {
             this.ClearAllFields();
+            this.txtCourseID.Enabled = true;
         }
 
         /// <summary>
@@ -238,6 +239,8 @@ namespace CoachConnect
             {
                 MessageBox.Show(ex.Message);
             }
+
+            this.txtCourseID.Enabled = false;
         }
 
         /// <summary>
